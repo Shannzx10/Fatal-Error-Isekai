@@ -1,0 +1,52 @@
+{
+  "start": {
+    "lines": [
+      {
+        "bg": "https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&q=80&w=1000",
+        "text": "..."
+      },
+      {
+        "text": "Ugh... kepalaku sakit..."
+      },
+      {
+        "speaker": "Suara Misterius",
+        "text": "Ah, kamu sudah bangun rupanya."
+      }
+    ],
+    "nextScene": "awakening"
+  },
+  "awakening": {
+    "lines": [
+      {
+        "bg": "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=1000",
+        "sprite": "https://cdn.pixabay.com/photo/2017/08/01/01/33/beanie-2562646_1280.jpg",
+        "speaker": "Orang Asing",
+        "text": "Selamat datang di dunia yang baru."
+      },
+      {
+        "speaker": "Orang Asing",
+        "text": "Kamu pasti bingung. Apakah kamu ingat namamu?",
+        "choices": [
+          { "text": "Ingat...", "target": "remember_name" },
+          { "text": "Tidak ingat sama sekali...", "target": "amnesia" }
+        ]
+      }
+    ]
+  },
+  "remember_name": {
+    "lines": [
+      {
+        "speaker": "Orang Asing",
+        "text": "Baguslah kalau begitu. Mari kita mulai perjalanan ini."
+      }
+    ]
+  },
+  "amnesia": {
+    "lines": [
+      {
+        "speaker": "Orang Asing",
+        "text": "Begitu ya... Amnesia efek samping yang umum terjadi. Jangan khawatir."
+      }
+    ]
+  }
+}

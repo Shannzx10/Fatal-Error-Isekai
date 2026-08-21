@@ -1,0 +1,134 @@
+/* src/engine/components/HistoryLog.css */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Rajdhani:wght@500;600&display=swap');
+
+.history-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 25, 0.9);
+  backdrop-filter: blur(8px);
+  z-index: 500;
+  
+  /* Perbaikan Flexbox untuk Center yang Mutlak */
+  display: flex;
+  justify-content: center !important; 
+  align-items: center !important; 
+  animation: fadeIn 0.2s ease-out;
+}
+
+.history-container {
+  width: 90%;
+  max-width: 800px;
+  height: 85%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--accent-color, #ff3366);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 30px var(--accent-color-faint, rgba(255, 51, 102, 0.3));
+  margin: auto; /* Memastikan posisinya jatuh ke tengah mutlak jika flexbox meleset */
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  border-bottom: 2px solid var(--accent-color-faint, rgba(255, 51, 102, 0.3));
+  background-color: rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.history-title {
+  margin: 0;
+  font-family: 'Chakra Petch', sans-serif;
+  color: white;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.history-close-btn {
+  background: transparent;
+  border: 1px solid var(--accent-color, #ff3366);
+  color: var(--accent-color, #ff3366);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.history-close-btn:hover {
+  background-color: var(--accent-color, #ff3366);
+  color: black;
+}
+
+.history-content {
+  flex-grow: 1;
+  padding: 20px 30px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+.history-content::-webkit-scrollbar { width: 8px; }
+.history-content::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+.history-content::-webkit-scrollbar-thumb { background: var(--accent-color-glow, rgba(255, 51, 102, 0.5)); border-radius: 4px; }
+
+.history-empty {
+  color: #777;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 50px;
+  font-style: italic;
+}
+
+.history-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-speaker {
+  font-family: 'Chakra Petch', sans-serif;
+  color: var(--accent-color, #ff3366);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.history-text {
+  font-family: 'Rajdhani', sans-serif;
+  color: #eee;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.history-choice .history-text {
+  color: #aaa;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+@media (max-width: 900px), (max-height: 600px) {
+  .history-container { width: 95%; height: 90%; }
+  .history-header { padding: 10px 15px; }
+  .history-title { font-size: 1.2rem; }
+  .history-content { padding: 15px; gap: 10px; }
+  .history-speaker { font-size: 1rem; }
+  .history-text { font-size: 1.1rem; }
+}

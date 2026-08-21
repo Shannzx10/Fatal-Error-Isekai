@@ -1,0 +1,51 @@
+/* src/engine/components/DialogBox.css */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Rajdhani:wght@500;600&display=swap');
+
+.dialog-box-container {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  width: 90%;
+  min-height: 120px;
+  /* Menggunakan variable css untuk transparansi. Jatuh kembali ke 0.85 jika gagal */
+  background-color: rgba(10, 10, 25, var(--dialog-opacity, 0.85));
+  border: 1px solid var(--accent-color-glow, rgba(255, 51, 102, 0.5)); /* Border dinamis */
+  border-radius: 4px;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px var(--accent-color-faint, rgba(255, 51, 102, 0.1));
+  backdrop-filter: blur(5px);
+}
+
+/* --- KELAS FONT UNTUK PENGATURAN GLOBAL --- */
+.dialog-box-container.font-small .dialog-text { font-size: 1rem; }
+.dialog-box-container.font-small .speaker-name { font-size: 1.1rem; }
+
+.dialog-box-container.font-medium .dialog-text { font-size: 1.3rem; }
+.dialog-box-container.font-medium .speaker-name { font-size: 1.4rem; }
+
+.dialog-box-container.font-large .dialog-text { font-size: 1.6rem; }
+.dialog-box-container.font-large .speaker-name { font-size: 1.7rem; }
+
+.speaker-name {
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--accent-color, #ff3366); 
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px var(--accent-color-glow, rgba(255, 51, 102, 0.5));
+}
+
+.dialog-text {
+  font-family: 'Rajdhani', sans-serif;
+  line-height: 1.5;
+  flex-grow: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+

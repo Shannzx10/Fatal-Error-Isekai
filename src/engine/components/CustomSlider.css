@@ -1,0 +1,46 @@
+/* src/engine/components/CustomSlider.css */
+
+.custom-slider-container {
+  width: 100%;
+  height: 30px; /* Area sentuh sangat lebar */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  touch-action: none; /* Mencegah layar scroll ke bawah saat slider disentuh */
+}
+
+.custom-slider-track {
+  position: relative;
+  width: 100%;
+  height: 6px; /* Ketebalan garis slider */
+  background-color: rgba(255, 255, 255, 0.3); /* Warna track kosong */
+  border-radius: 3px;
+}
+
+.custom-slider-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--accent-color, #ff3366); /* Warna track yang terisi mengikuti aksen */
+  border-radius: 3px;
+  pointer-events: none; /* Biarkan event klik tembus ke track */
+}
+
+.custom-slider-thumb {
+  position: absolute;
+  top: 50%;
+  width: 16px; /* Diperkecil menjadi 16px */
+  height: 16px; /* Diperkecil menjadi 16px */
+  background-color: var(--accent-color, #ff3366);
+  border-radius: 50%;
+  transform: translate(-50%, -50%); /* Agar tepat di tengah titik persentase */
+  box-shadow: 0 0 10px var(--accent-color-glow, rgba(255, 51, 102, 0.5));
+  transition: transform 0.1s ease;
+  pointer-events: none; /* Mencegah thumb memblokir klik pada track */
+}
+
+.custom-slider-thumb.active {
+  transform: translate(-50%, -50%) scale(1.2); /* Membesar sedikit saat ditarik */
+  box-shadow: 0 0 15px var(--accent-color-glow, rgba(255, 51, 102, 0.8));
+}

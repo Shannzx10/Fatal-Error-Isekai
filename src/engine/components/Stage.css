@@ -1,0 +1,86 @@
+/* src/engine/components/Stage.css */
+.vn-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tombol Menu di pojok kanan atas In-Game */
+.ingame-menu-container {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 200;
+  display: flex;
+  gap: 10px; /* Memberikan jarak pasti antar tombol */
+  align-items: center;
+}
+
+.ingame-menu-btn {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-family: 'Rajdhani', sans-serif; 
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Khusus tombol || kembalikan ke font biasa agar icon lurus */
+.ingame-menu-btn.icon-btn {
+  font-family: sans-serif;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  padding: 5px 12px;
+}
+
+.ingame-menu-btn.active {
+  background: var(--accent-color-glow, rgba(255, 51, 102, 0.5));
+  border-color: var(--accent-color, #ff3366);
+  color: var(--accent-color, #ff3366);
+}
+
+/* Jangan pakai hover yang permanen di perangkat sentuh/ketika difokuskan */
+@media (hover: hover) {
+  .ingame-menu-btn:hover {
+    background: var(--accent-color-glow, rgba(255, 51, 102, 0.5));
+    border-color: var(--accent-color, #ff3366);
+  }
+}
+
+.ingame-menu-btn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 900px), (max-height: 600px) {
+  .ingame-menu-container {
+    top: 10px;
+    right: 10px;
+    gap: 8px; /* Jarak dirapatkan sedikit di HP */
+  }
+  .ingame-menu-btn {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+  }
+  .ingame-menu-btn.icon-btn {
+    font-size: 1rem;
+    padding: 4px 10px;
+  }
+}

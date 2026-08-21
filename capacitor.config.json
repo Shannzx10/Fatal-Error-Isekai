@@ -1,0 +1,10 @@
+{
+  "appId": "com.fatalerror.isekai",
+  "appName": "fatal-error-isekai",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "http://localhost:5173",
+    "cleartext": true
+  }
+}

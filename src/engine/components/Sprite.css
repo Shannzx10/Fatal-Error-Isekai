@@ -1,0 +1,31 @@
+/* src/engine/components/Sprite.css */
+.sprite-container {
+  position: absolute;
+  bottom: 0;
+  height: 80%; /* Adjust based on asset scale */
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.sprite-image {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Positions */
+.pos-left { left: 10%; }
+.pos-center { left: 50%; transform: translateX(-50%); }
+.pos-right { right: 10%; }
+
+/* Simple Animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.anim-fade-in {
+  animation: fade-in 0.5s ease-in-out;
+}

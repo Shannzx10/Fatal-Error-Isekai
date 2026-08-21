@@ -1,0 +1,43 @@
+/* src/engine/components/ChoiceMenu.css */
+.choice-menu-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 80%;
+  max-width: 400px;
+}
+
+.choice-button {
+  background-color: rgba(10, 10, 25, 0.9);
+  color: white;
+  border: 1px solid var(--accent-color-faint, rgba(255, 255, 255, 0.3));
+  padding: 15px 20px;
+  border-radius: 4px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.choice-button:hover, .choice-button:active {
+  background-color: var(--accent-color-faint, rgba(70, 70, 70, 0.9));
+  border-color: var(--accent-color, white);
+  box-shadow: 0 0 15px var(--accent-color-glow, rgba(255, 255, 255, 0.2));
+  transform: scale(1.02);
+}
