@@ -197,7 +197,7 @@
 
 .setting-options::-webkit-scrollbar { width: 6px; }
 .setting-options::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
-.setting-options::-webkit-scrollbar-thumb { background: rgba(255, 51, 102, 0.5); border-radius: 4px; }
+.setting-options::-webkit-scrollbar-thumb { background: var(--accent-color-glow, rgba(255, 51, 102, 0.5)); border-radius: 4px; }
 
 .setting-group {
   display: flex;

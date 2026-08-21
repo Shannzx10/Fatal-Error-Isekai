@@ -7,6 +7,7 @@ export const defaultSettings = {
   fontSize: 'medium', // 'small', 'medium', 'large'
   accentColor: '#ff3366', // Hex color (Default: Cyberpunk Pink)
   dialogOpacity: 85, // 0 - 100 (Default: 85%)
+  enableTransitions: true, // boolean (Default: true)
   
   // Teks & Dialog
   textSpeed: 30, // milliseconds per character. 0 = instant
