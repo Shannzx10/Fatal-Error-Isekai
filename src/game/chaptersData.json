@@ -1,0 +1,19 @@
+[
+  {
+    "id": "chapter_1",
+    "title": "Awal Mula",
+    "subtitle": "Chapter 1",
+    "thumbnail": "https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&q=80&w=300",
+    "isFree": true,
+    "scriptFile": "story.json"
+  },
+  {
+    "id": "chapter_2",
+    "title": "Dunia Berbeda",
+    "subtitle": "Chapter 2",
+    "thumbnail": "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=300",
+    "isFree": false,
+    "price": "Rp 15.000",
+    "scriptFile": "chapter2.json"
+  }
+]

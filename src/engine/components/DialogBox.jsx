@@ -80,6 +80,13 @@ export function DialogBox({ speaker, text, onClick, settings, isAuto, isSkip }) 
     <div className={`dialog-box-container ${fontSizeClass}`} onClick={handleClick}>
       {speaker && <div className="speaker-name">{speaker}</div>}
       <div className="dialog-text">{displayedText}</div>
+      
+      {/* Indikator Lanjut (Next) */}
+      {!isTyping && !isSkip && (
+        <div className={`next-indicator ${isAuto ? 'auto-mode' : ''}`}>
+          {isAuto ? '▶▶' : '▼'}
+        </div>
+      )}
     </div>
   );
 }

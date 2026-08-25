@@ -55,10 +55,31 @@ body, html {
 
 .end-screen {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
   background-color: black;
   color: white;
+}
+
+.hide-ui-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+  cursor: pointer;
+}
+
+.cutscene-skip-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 600; /* Di atas segalanya */
+  cursor: pointer;
 }

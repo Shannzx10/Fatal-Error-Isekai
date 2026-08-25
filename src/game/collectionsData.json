@@ -1,0 +1,92 @@
+[
+  {
+    "id": "cg_glitch_entity",
+    "title": "Anomali di Dalam Kode",
+    "thumbnail": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=300",
+    "type": "cg"
+  },
+  {
+    "id": "bad_ending_01",
+    "title": "Tersetrum Sebelum Berkembang",
+    "thumbnail": "https://images.unsplash.com/photo-1493612276216-ee3925520721?auto=format&fit=crop&q=80&w=300",
+    "type": "ending"
+  },
+  {
+    "id": "cg_elise_bath",
+    "title": "Pertemuan Tak Terduga (dan Basah)",
+    "thumbnail": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&q=80&w=300",
+    "type": "cg"
+  },
+  {
+    "id": "cg_elise_morning_training",
+    "title": "Keringat Pagi Ksatria Suci",
+    "thumbnail": "https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&q=80&w=300",
+    "type": "cg"
+  },
+  {
+    "id": "secret_dev_ui",
+    "title": "Akses Admin (Rusak)",
+    "thumbnail": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=300",
+    "type": "secret"
+  },
+  {
+    "id": "cg_slime_trouble",
+    "title": "Lendir yang Menjengkelkan",
+    "thumbnail": "https://images.unsplash.com/photo-1618361853655-98516fbba1b0?auto=format&fit=crop&q=80&w=300",
+    "type": "cg"
+  },
+  {
+    "id": "bad_ending_02",
+    "title": "Meleleh Bersama Bug",
+    "thumbnail": "https://images.unsplash.com/photo-1580584126903-c17d41830450?auto=format&fit=crop&q=80&w=300",
+    "type": "ending"
+  },
+  {
+    "id": "cg_elise_new_outfit",
+    "title": "Ksatria di Luar Jam Kerja",
+    "thumbnail": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=300",
+    "type": "cg"
+  },
+  {
+    "id": "bad_ending_03",
+    "title": "Sepatu Terbang Kematian",
+    "thumbnail": "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?auto=format&fit=crop&q=80&w=300",
+    "type": "ending"
+  },
+  {
+    "id": "cg_tavern_meal",
+    "title": "Rasa Makanan Sungguhan",
+    "thumbnail": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=300",
+    "type": "cg"
+  },
+  {
+    "id": "cg_guild_lyra",
+    "title": "Senyum Sang Resepsionis",
+    "thumbnail": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300",
+    "type": "cg"
+  },
+  {
+    "id": "secret_glitch_dagger",
+    "title": "Senjata Sampah Tier Dewa",
+    "thumbnail": "https://images.unsplash.com/photo-1589154904586-7a13c959779d?auto=format&fit=crop&q=80&w=300",
+    "type": "secret"
+  },
+  {
+    "id": "cg_elise_tentacle",
+    "title": "Ikatan Sang Anomali",
+    "thumbnail": "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&q=80&w=300",
+    "type": "cg"
+  },
+  {
+    "id": "bad_ending_04",
+    "title": "Santapan Kelelawar Glitch",
+    "thumbnail": "https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?auto=format&fit=crop&q=80&w=300",
+    "type": "ending"
+  },
+  {
+    "id": "cg_chapter1_end",
+    "title": "Pesan Misterius (Akhir Chapter 1)",
+    "thumbnail": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=300",
+    "type": "cg"
+  }
+]

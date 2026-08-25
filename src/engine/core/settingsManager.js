@@ -16,6 +16,7 @@ export const defaultSettings = {
   masterVolume: 100, // 0 - 100
   bgmVolume: 80, // 0 - 100
   sfxVolume: 80, // 0 - 100
+  voiceVolume: 100, // 0 - 100 (Untuk suara karakter bicara)
 };
 
 export const getSettings = () => {

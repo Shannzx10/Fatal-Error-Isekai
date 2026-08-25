@@ -1,10 +1,18 @@
 // src/engine/core/useEngine.js
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
+import { playBGM, stopBGM, playSFX, playVoice, stopVoice } from './audioManager';
+import { saveAutoSave, clearAutoSave, getAutoSave } from './saveManager';
+import { unlockCollection } from './collectionManager';
 
 export function useEngine(script) {
-  const [currentSceneId, setCurrentSceneId] = useState('start');
-  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  // Ambil state awal dari autosave jika ada
+  const initialSave = getAutoSave();
   
+  const [currentSceneId, setCurrentSceneId] = useState(initialSave ? initialSave.sceneId : 'start');
+  const [currentLineIndex, setCurrentLineIndex] = useState(initialSave ? initialSave.lineIndex : 0);
+  
+  const isInitialMount = useRef(true);
+
   // State untuk Backlog
   const [history, setHistory] = useState([]);
   
@@ -15,9 +23,110 @@ export function useEngine(script) {
   const currentScene = script[currentSceneId];
   const currentLine = currentScene ? currentScene.lines[currentLineIndex] : null;
 
+  // Fungsi untuk mendapatkan visual yang persisten dengan melacak mundur dalam scene
+  const getPersistentVisuals = useCallback(() => {
+    let bg = null, video = null;
+    let spriteLeft = null, spriteCenter = null, spriteRight = null;
+    let activeSlot = 'center'; // Melacak siapa yang sedang bicara
+    
+    // Dictionary sederhana untuk mengingat karakter mana ada di slot mana
+    const speakerToSlot = {};
+    
+    if (currentScene && currentScene.lines) {
+      for (let i = 0; i <= currentLineIndex; i++) {
+        const line = currentScene.lines[i];
+        if (line.bg !== undefined) bg = line.bg;
+        if (line.video !== undefined) video = line.video;
+        
+        // Kompatibilitas mundur
+        if (line.sprite !== undefined) {
+          const pos = line.spritePos || 'center';
+          if (pos === 'left') spriteLeft = line.sprite;
+          if (pos === 'center') spriteCenter = line.sprite;
+          if (pos === 'right') spriteRight = line.sprite;
+          
+          if (line.speaker && line.sprite !== 'clear') {
+            speakerToSlot[line.speaker] = pos;
+          }
+        }
+        
+        if (line.spriteLeft !== undefined) {
+          spriteLeft = line.spriteLeft;
+          if (line.speaker && spriteLeft !== 'clear') speakerToSlot[line.speaker] = 'left';
+        }
+        if (line.spriteCenter !== undefined) {
+          spriteCenter = line.spriteCenter;
+          if (line.speaker && spriteCenter !== 'clear') speakerToSlot[line.speaker] = 'center';
+        }
+        if (line.spriteRight !== undefined) {
+          spriteRight = line.spriteRight;
+          if (line.speaker && spriteRight !== 'clear') speakerToSlot[line.speaker] = 'right';
+        }
+
+        // Tentukan siapa yang aktif di baris ini
+        if (line.speaker) {
+          if (speakerToSlot[line.speaker]) {
+            activeSlot = speakerToSlot[line.speaker];
+          } else {
+            // Jika tidak ada di memory, default ke tengah
+            activeSlot = 'center'; 
+          }
+        } else {
+          // Jika narator (tanpa speaker), semua sprite bisa redup, atau tetap seperti sebelumnya
+          activeSlot = null; 
+        }
+      }
+    }
+    
+    return { 
+      activeBg: bg === 'clear' ? null : bg, 
+      activeVideo: video === 'clear' ? null : video, 
+      activeSpriteLeft: spriteLeft === 'clear' ? null : spriteLeft,
+      activeSpriteCenter: spriteCenter === 'clear' ? null : spriteCenter,
+      activeSpriteRight: spriteRight === 'clear' ? null : spriteRight,
+      activeSlot
+    };
+  }, [currentScene, currentLineIndex]);
+
+  const visuals = getPersistentVisuals();
+
   // Catat riwayat setiap kali baris dialog berubah
   useEffect(() => {
-    if (currentLine && currentLine.text) {
+    if (!currentLine) return;
+
+    // --- LOGIKA BGM ---
+    if (currentLine.bgm) {
+      if (currentLine.bgm === 'stop') {
+        stopBGM();
+      } else {
+        playBGM(currentLine.bgm);
+      }
+    }
+
+    // --- LOGIKA SFX ---
+    if (currentLine.sfx) {
+      playSFX(currentLine.sfx);
+    }
+
+    // --- LOGIKA VOICE (Suara Karakter) ---
+    if (currentLine.voice) {
+      if (currentLine.voice === 'stop') {
+        stopVoice();
+      } else {
+        playVoice(currentLine.voice);
+      }
+    } else {
+      // Hentikan suara karakter sebelumnya jika baris baru tidak punya voice
+      // (Bisa dihapus jika Anda ingin suaranya nyambung walau teks sudah diklik)
+      stopVoice();
+    }
+
+    // --- LOGIKA COLLECTION UNLOCK ---
+    if (currentLine.unlockCollection) {
+      unlockCollection(currentLine.unlockCollection);
+    }
+
+    if (currentLine.text) {
       setHistory(prev => {
         if (prev.length > 0 && prev[prev.length - 1].text === currentLine.text && prev[prev.length - 1].speaker === currentLine.speaker) {
           return prev;
@@ -25,13 +134,16 @@ export function useEngine(script) {
         return [...prev, { speaker: currentLine.speaker, text: currentLine.text }];
       });
     }
-    
-    // Matikan Auto & Skip jika menemui percabangan pilihan (Choice)
-    if (currentLine && currentLine.choices) {
-      setIsAuto(false);
-      setIsSkip(false);
+
+    // Hindari save saat render pertama kali, biarkan interaksi player yang trigger
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      // Auto-save setiap kali baris berubah agar tidak hilang saat browser ke-refresh
+      saveAutoSave(currentSceneId, currentLineIndex);
     }
-  }, [currentLine]);
+    
+  }, [currentLine, currentSceneId, currentLineIndex]);
 
   const nextLine = useCallback(() => {
     if (!currentScene) return;
@@ -69,6 +181,9 @@ export function useEngine(script) {
     setHistory([]); 
     setIsAuto(false);
     setIsSkip(false);
+    stopBGM();
+    stopVoice();
+    clearAutoSave(); // Bersihkan auto-save saat pemain kembali ke Main Menu secara sengaja
   }, []);
 
   const toggleAuto = useCallback(() => {
@@ -96,6 +211,7 @@ export function useEngine(script) {
     currentSceneId,
     currentLineIndex,
     currentLine,
+    visuals,
     history,
     nextLine,
     makeChoice,

@@ -1,0 +1,280 @@
+/* src/engine/components/CollectionMenu.css */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Rajdhani:wght@500;600&display=swap');
+
+.collection-menu-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 600;
+  background-color: #1a1a2e;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.collection-menu-container .menu-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  object-fit: cover;
+  object-position: center;
+}
+
+.collection-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.2) 100%);
+  backdrop-filter: blur(8px);
+  z-index: -1;
+}
+
+.collection-layout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+/* ==================== SIDEBAR KIRI ==================== */
+.collection-sidebar {
+  width: 35%;
+  min-width: 250px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10vh 0 5vh 5%;
+  box-sizing: border-box;
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 8vh;
+}
+
+.collection-main-title {
+  display: none; /* Hide unless on mobile */
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: fit-content;
+}
+
+.collection-sidebar-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Rajdhani', sans-serif; 
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 8px 0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: visible; 
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.collection-sidebar-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -20px; 
+  width: 10px;
+  height: 2px;
+  background-color: var(--accent-color, #ff3366);
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+@media (hover: hover) {
+  .collection-sidebar-btn:hover, .collection-sidebar-btn:focus {
+    color: #ffffff;
+    padding-left: 15px; 
+    outline: none;
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5); 
+  }
+
+  .collection-sidebar-btn:hover::before, .collection-sidebar-btn:focus::before {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+.collection-sidebar-btn:active {
+  color: #ffffff;
+  padding-left: 15px; 
+  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5); 
+}
+
+.collection-sidebar-btn:active::before {
+  opacity: 1;
+  left: 0;
+}
+
+.collection-sidebar-btn.active {
+  color: #ffffff;
+  padding-left: 15px;
+}
+.collection-sidebar-btn.active::before {
+  opacity: 1;
+  left: 0;
+  background-color: var(--accent-color, #ff3366);
+}
+
+.collection-sidebar-btn.back-btn {
+  margin-top: auto;
+  margin-bottom: 5vh;
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+/* ==================== KONTEN KANAN ==================== */
+.collection-content-area {
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10vh 5% 5vh 0;
+  box-sizing: border-box;
+}
+
+.section-title {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 2rem;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 2.5rem; /* Diperbesar agar jarak dengan grid lebih lega */
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--accent-color-glow, rgba(255, 51, 102, 0.5));
+  border-bottom: 3px solid var(--accent-color, #ff3366);
+  padding-bottom: 15px; /* Jarak teks judul ke garis bawah diperlebar */
+  width: 100%;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: max-content; /* Pastikan tinggi box cukup untuk kontennya */
+  gap: 20px;
+  overflow-y: auto;
+  padding-right: 15px;
+  margin-top: 15px; /* Jarak agar scrollbar tidak nempel dengan garis atas */
+  flex-grow: 1; /* Mengisi sisa ruang */
+  height: 0; /* Penting untuk flex-grow bekerja dengan overflow */
+}
+
+.collection-grid::-webkit-scrollbar { width: 8px; }
+.collection-grid::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); border-radius: 4px; }
+.collection-grid::-webkit-scrollbar-thumb { background: var(--accent-color-glow, rgba(255, 51, 102, 0.5)); border-radius: 4px; }
+
+.collection-item {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.collection-item.unlocked:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px var(--accent-color-faint, rgba(255, 51, 102, 0.2));
+  border-color: var(--accent-color, #ff3366);
+}
+
+.collection-thumbnail {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.collection-item.locked .collection-thumbnail {
+  filter: grayscale(100%) brightness(30%);
+}
+
+.locked-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.collection-info {
+  padding: 10px;
+  text-align: center;
+  flex-shrink: 0; /* Jangan sampai teksnya terlipat/ketutup kalau sempit */
+}
+
+.collection-name {
+  font-family: 'Rajdhani', sans-serif;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.collection-item.locked .collection-name {
+  color: #777;
+  font-style: italic;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 900px), (max-height: 600px) {
+  .collection-sidebar-btn { font-size: 1.1rem; padding: 5px 0; } 
+  
+  .collection-sidebar {
+    width: 30%; 
+    min-width: 140px; 
+    padding: 6vh 0 3vh 8%;
+  }
+
+  .sidebar-top {
+    gap: 1rem; 
+    margin-bottom: 2vh;
+  }
+
+  .collection-content-area {
+    width: 70%;
+    padding: 6vh 5% 3vh 2%;
+  }
+
+  .section-title { font-size: 1.6rem; margin-bottom: 1.5rem; border-width: 2px; } 
+  .collection-grid { gap: 15px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } 
+}
+
+@media (max-width: 650px), (max-height: 450px) {
+  .collection-sidebar-btn { font-size: 1rem; letter-spacing: 1px; }
+  .collection-sidebar { width: 30%; min-width: 120px; padding-left: 5%; }
+  .collection-content-area { width: 70%; padding-left: 2%; padding-right: 5%; }
+  .collection-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+  .collection-name { font-size: 0.9rem; }
+}

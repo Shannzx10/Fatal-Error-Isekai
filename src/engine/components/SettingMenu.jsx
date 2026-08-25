@@ -58,6 +58,10 @@ export function SettingMenu({ inGame, onBack, onNavigate }) {
                 <span className="btn-text">Load/Save Game</span>
               </button>
 
+              <button className="setting-sidebar-btn" onClick={() => onNavigate('collection')}>
+                <span className="btn-text">Gallery & Ending</span>
+              </button>
+
               <button className="setting-sidebar-btn active">
                 <span className="btn-text">Setting</span>
               </button>
@@ -72,7 +76,7 @@ export function SettingMenu({ inGame, onBack, onNavigate }) {
 
           {!inGame && (
             <button className="setting-sidebar-btn back-btn" onClick={onBack}>
-              <span className="btn-text">« Kembali</span>
+              <span className="btn-text">Kembali</span>
             </button>
           )}
         </div>
@@ -164,6 +168,20 @@ export function SettingMenu({ inGame, onBack, onNavigate }) {
               </div>
 
               <div className="setting-item">
+                <label>Transisi & Efek</label>
+                <div className="setting-controls">
+                  <button 
+                    className={`setting-opt-btn ${settings.enableTransitions === true ? 'active' : ''}`}
+                    onClick={() => { handleChange('enableTransitions', true); handleSaveIndicator(); }}
+                  >Aktif</button>
+                  <button 
+                    className={`setting-opt-btn ${settings.enableTransitions === false ? 'active' : ''}`}
+                    onClick={() => { handleChange('enableTransitions', false); handleSaveIndicator(); }}
+                  >Mati</button>
+                </div>
+              </div>
+
+              <div className="setting-item">
                 <label>Kecepatan Teks (ms)</label>
                 <div className="setting-controls slider-container">
                   <CustomSlider 
@@ -217,6 +235,19 @@ export function SettingMenu({ inGame, onBack, onNavigate }) {
                     onRelease={handleSaveIndicator}
                   />
                   <span className="slider-value">{settings.sfxVolume}%</span>
+                </div>
+              </div>
+              
+              <div className="setting-item">
+                <label>Suara Karakter (Voice)</label>
+                <div className="setting-controls slider-container">
+                  <CustomSlider 
+                    min={0} max={100} step={1}
+                    value={settings.voiceVolume !== undefined ? settings.voiceVolume : 100}
+                    onChange={(val) => handleChange('voiceVolume', val)}
+                    onRelease={handleSaveIndicator}
+                  />
+                  <span className="slider-value">{settings.voiceVolume !== undefined ? settings.voiceVolume : 100}%</span>
                 </div>
               </div>
             </div>

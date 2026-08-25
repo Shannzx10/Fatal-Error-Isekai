@@ -1,0 +1,216 @@
+/* src/engine/components/ChapterMenu.css */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Rajdhani:wght@500;600&display=swap');
+
+.chapter-menu-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 600;
+  background-color: #1a1a2e;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.chapter-menu-container .menu-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  object-fit: cover;
+  object-position: center;
+}
+
+.chapter-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.8) 100%);
+  backdrop-filter: blur(8px);
+  z-index: -1;
+}
+
+.chapter-full-layout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5vh 5%;
+  box-sizing: border-box;
+}
+
+.chapter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3vh;
+  border-bottom: 2px solid var(--accent-color, #ff3366);
+  padding-bottom: 10px;
+}
+
+.section-title {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 2rem;
+  color: #ffffff;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--accent-color-glow, rgba(255, 51, 102, 0.5));
+}
+
+.chapter-back-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.1rem;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.chapter-back-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: max-content;
+  gap: 20px;
+  overflow-y: auto;
+  padding: 5px;
+  padding-right: 15px;
+  margin-top: 15px;
+  flex-grow: 1;
+  height: 0;
+}
+
+.chapter-grid::-webkit-scrollbar { width: 8px; }
+.chapter-grid::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); border-radius: 4px; }
+.chapter-grid::-webkit-scrollbar-thumb { background: var(--accent-color-glow, rgba(255, 51, 102, 0.5)); border-radius: 4px; }
+
+.chapter-card {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  height: auto;
+}
+
+.chapter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px var(--accent-color-faint, rgba(255, 51, 102, 0.2));
+  border-color: var(--accent-color, #ff3366);
+}
+
+.chapter-thumbnail {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.chapter-card.locked .chapter-thumbnail {
+  filter: grayscale(100%) brightness(40%);
+}
+
+.locked-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+}
+
+.chapter-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.chapter-subtitle {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--accent-color, #ff3366);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  letter-spacing: 1px;
+}
+
+.chapter-title {
+  font-family: 'Chakra Petch', sans-serif;
+  color: #fff;
+  font-size: 1.6rem;
+  margin: 0 0 15px 0;
+}
+
+.chapter-card.locked .chapter-title {
+  color: #aaa;
+}
+
+.status-play {
+  font-family: 'Chakra Petch', sans-serif;
+  color: #fff;
+  background-color: var(--accent-color-faint, rgba(255, 51, 102, 0.2));
+  border: 1px solid var(--accent-color, #ff3366);
+  padding: 6px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.status-buy {
+  font-family: 'Chakra Petch', sans-serif;
+  color: #aaa;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.chapter-card.locked:hover .status-buy {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 900px), (max-height: 600px) {
+  .section-title { font-size: 1.5rem; }
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 650px), (max-height: 450px) {
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+  }
+  .chapter-title { font-size: 1.3rem; }
+}

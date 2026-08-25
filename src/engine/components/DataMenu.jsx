@@ -10,7 +10,8 @@ export function DataMenu({ mode, inGame, onAction, onBack, onNavigate }) {
   const videoRef = useRef(null);
 
   const refreshSlots = () => {
-    const slots = [1, 2, 3, 4].map(slotNum => {
+    // Menambah jumlah slot menjadi 8
+    const slots = [1, 2, 3, 4, 5, 6, 7, 8].map(slotNum => {
       const data = getSaveData(slotNum);
       return { slot: slotNum, data };
     });
@@ -86,6 +87,10 @@ export function DataMenu({ mode, inGame, onAction, onBack, onNavigate }) {
                 <span className="btn-text">Load/Save Game</span>
               </button>
 
+              <button className="sidebar-btn" onClick={() => onNavigate('collection')}>
+                <span className="btn-text">Gallery & Ending</span>
+              </button>
+
               <button className="sidebar-btn" onClick={() => onNavigate('setting')}>
                 <span className="btn-text">Setting</span>
               </button>
@@ -102,7 +107,7 @@ export function DataMenu({ mode, inGame, onAction, onBack, onNavigate }) {
           {/* Tombol kembali ke menu utama ini HANYA TAMPIL jika diakses dari Main Menu (bukan In-Game) */}
           {!inGame && (
             <button className="sidebar-btn back-btn" onClick={onBack}>
-              <span className="btn-text">« Kembali</span>
+              <span className="btn-text">Kembali</span>
             </button>
           )}
         </div>

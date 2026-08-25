@@ -7,18 +7,36 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  transition: all 0.3s ease-in-out;
+  transform-origin: bottom center;
 }
 
 .sprite-image {
   max-height: 100%;
   width: auto;
   object-fit: contain;
+  transition: filter 0.3s ease-in-out;
+}
+
+/* Inactive State (Lawan Bicara) */
+.sprite-container.inactive {
+  transform: scale(0.9) translateY(20px);
+  z-index: 40; /* Mundur ke belakang karakter aktif */
+}
+
+.sprite-container.inactive .sprite-image {
+  filter: brightness(60%) grayscale(20%);
+}
+
+.sprite-container.active {
+  z-index: 60; /* Maju ke depan */
 }
 
 /* Positions */
 .pos-left { left: 10%; }
 .pos-center { left: 50%; transform: translateX(-50%); }
 .pos-right { right: 10%; }
+.pos-center.inactive { transform: translateX(-50%) scale(0.9) translateY(20px); }
 
 /* Simple Animations */
 @keyframes fade-in {

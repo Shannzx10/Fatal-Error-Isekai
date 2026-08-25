@@ -187,9 +187,11 @@
 .setting-options {
   width: 100%;
   max-width: 800px;
-  height: 80vh;
+  flex-grow: 1;
+  height: 0;
   overflow-y: auto;
   padding-right: 15px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
@@ -207,6 +209,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1.5rem;
   border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .group-title {

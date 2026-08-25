@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import './MainMenu.css';
 
-export function MainMenu({ onStart, onLoad, onSettings, onExit }) {
+export function MainMenu({ onStart, onLoad, onSettings, onCollection, onExit }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -41,6 +41,9 @@ export function MainMenu({ onStart, onLoad, onSettings, onExit }) {
           </button>
           <button className="menu-btn" onClick={onLoad}>
             <span className="btn-text">Load/Save Game</span>
+          </button>
+          <button className="menu-btn" onClick={onCollection}>
+            <span className="btn-text">Gallery & Ending</span>
           </button>
           <button className="menu-btn" onClick={onSettings}>
             <span className="btn-text">Setting</span>

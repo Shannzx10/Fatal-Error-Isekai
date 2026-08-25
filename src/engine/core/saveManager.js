@@ -1,5 +1,6 @@
 // src/engine/core/saveManager.js
 const SAVE_PREFIX = 'fei_save_slot_';
+const AUTOSAVE_KEY = 'fei_autosave_dev'; // Khusus untuk mencegah hilang progress saat browser refresh
 
 export const getSaveData = (slot) => {
   try {
@@ -28,4 +29,28 @@ export const saveGameData = (slot, sceneId, lineIndex, textPreview) => {
     console.error("Failed to save game data", e);
     return false;
   }
+};
+
+// --- Fungsi Auto-Save untuk Development & Player ---
+export const saveAutoSave = (sceneId, lineIndex) => {
+  try {
+    localStorage.setItem(AUTOSAVE_KEY, JSON.stringify({ sceneId, lineIndex }));
+  } catch(e) {
+    // Abaikan jika error (misal storage penuh/private mode)
+  }
+};
+
+export const getAutoSave = () => {
+  try {
+    const data = localStorage.getItem(AUTOSAVE_KEY);
+    return data ? JSON.parse(data) : null;
+  } catch(e) {
+    return null;
+  }
+};
+
+export const clearAutoSave = () => {
+  try {
+    localStorage.removeItem(AUTOSAVE_KEY);
+  } catch(e) {}
 };

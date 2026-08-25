@@ -162,8 +162,10 @@
   flex-direction: column;
   gap: 15px;
   overflow-y: auto;
-  height: 70vh;
   padding-right: 15px;
+  margin-top: 15px;
+  flex-grow: 1;
+  height: 0;
 }
 
 .slots-container::-webkit-scrollbar {
@@ -186,7 +188,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   border: 1px solid var(--accent-color-faint, rgba(255, 51, 102, 0.3));
   border-radius: 4px;
-  padding: 15px 20px;
+  padding: 20px 25px; /* Dibuat lebih besar/lebar */
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   font-family: 'Rajdhani', sans-serif;
@@ -195,6 +197,7 @@
   backdrop-filter: blur(5px);
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .slot-button::before {
@@ -433,9 +436,9 @@
   }
 
   .section-title { font-size: 1.6rem; margin-bottom: 1rem; border-width: 2px; } 
-  .slots-container { height: 85vh; gap: 10px; } 
+  .slots-container { gap: 10px; } 
   
-  .slot-button { padding: 10px 15px; } 
+  .slot-button { padding: 15px 20px; } 
   .slot-number { font-size: 1.3rem; width: 50px; margin-right: 10px; } 
   .slot-date { font-size: 0.8rem; } 
   .slot-text { font-size: 1rem; } 
@@ -451,5 +454,5 @@
   .sidebar-btn { font-size: 1rem; letter-spacing: 1px; }
   .data-sidebar { width: 30%; min-width: 120px; padding-left: 5%; } /* Jangan kurang dari 5% */
   .data-slots-area { width: 70%; padding-left: 2%; padding-right: 5%; }
-  .slot-button { padding: 8px; }
+  .slot-button { padding: 10px 15px; }
 }

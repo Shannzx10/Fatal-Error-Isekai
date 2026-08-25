@@ -49,3 +49,30 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
+/* Indikator Lanjut (Click to continue) */
+.next-indicator {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  font-size: 1.2rem;
+  color: var(--accent-color, #ff3366);
+  animation: bounce 1s infinite;
+  text-shadow: 0 0 5px var(--accent-color-glow, rgba(255, 51, 102, 0.5));
+}
+
+.next-indicator.auto-mode {
+  animation: blink 1.5s infinite;
+  font-size: 1rem;
+  right: 25px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
