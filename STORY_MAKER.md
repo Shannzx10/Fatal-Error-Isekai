@@ -118,8 +118,7 @@ Berikan *prompt* kepada AI Story Generator untuk membuat struktur seperti contoh
       },
       {
         "speaker": "Pria Misterius",
-        "sprite": "https://cdn.pixabay.com/photo/2017/08/01/01/33/beanie-2562646_1280.jpg",
-        "spritePos": "center",
+        "spriteCenter": "https://cdn.pixabay.com/photo/2017/08/01/01/33/beanie-2562646_1280.jpg",
         "voice": "path/to/voice_01.mp3",
         "text": "Akhirnya kamu sadar juga."
       },

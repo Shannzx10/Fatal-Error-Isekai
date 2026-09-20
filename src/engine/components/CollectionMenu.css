@@ -51,7 +51,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 10vh 0 5vh 5%;
+  padding: 10% 0 5% 5%;
   box-sizing: border-box;
 }
 
@@ -59,7 +59,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-bottom: 8vh;
+  margin-bottom: 8%;
 }
 
 .collection-main-title {
@@ -142,7 +142,7 @@
 
 .collection-sidebar-btn.back-btn {
   margin-top: auto;
-  margin-bottom: 5vh;
+  margin-bottom: 5%;
   color: #ffffff;
   opacity: 0.8;
 }
@@ -153,7 +153,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 10vh 5% 5vh 0;
+  padding: 10% 5% 5% 0;
   box-sizing: border-box;
 }
 
@@ -177,8 +177,8 @@
   grid-auto-rows: max-content; /* Pastikan tinggi box cukup untuk kontennya */
   gap: 20px;
   overflow-y: auto;
-  padding-right: 15px;
-  margin-top: 15px; /* Jarak agar scrollbar tidak nempel dengan garis atas */
+  padding: 10px 15px 10px 10px; /* Tambahan padding agar hover tidak terpotong */
+  margin-top: 5px; 
   flex-grow: 1; /* Mengisi sisa ruang */
   height: 0; /* Penting untuk flex-grow bekerja dengan overflow */
 }
@@ -248,33 +248,3 @@
   to { opacity: 1; }
 }
 
-@media (max-width: 900px), (max-height: 600px) {
-  .collection-sidebar-btn { font-size: 1.1rem; padding: 5px 0; } 
-  
-  .collection-sidebar {
-    width: 30%; 
-    min-width: 140px; 
-    padding: 6vh 0 3vh 8%;
-  }
-
-  .sidebar-top {
-    gap: 1rem; 
-    margin-bottom: 2vh;
-  }
-
-  .collection-content-area {
-    width: 70%;
-    padding: 6vh 5% 3vh 2%;
-  }
-
-  .section-title { font-size: 1.6rem; margin-bottom: 1.5rem; border-width: 2px; } 
-  .collection-grid { gap: 15px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } 
-}
-
-@media (max-width: 650px), (max-height: 450px) {
-  .collection-sidebar-btn { font-size: 1rem; letter-spacing: 1px; }
-  .collection-sidebar { width: 30%; min-width: 120px; padding-left: 5%; }
-  .collection-content-area { width: 70%; padding-left: 2%; padding-right: 5%; }
-  .collection-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
-  .collection-name { font-size: 0.9rem; }
-}

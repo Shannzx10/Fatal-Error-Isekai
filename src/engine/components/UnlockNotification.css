@@ -1,0 +1,57 @@
+.unlock-notification {
+  position: absolute;
+  bottom: 20px;
+  right: -320px;
+  width: 280px;
+  background-color: rgba(10, 10, 20, 0.85);
+  border: 1px solid var(--accent-color, #ff3366);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 51, 102, 0.2);
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  animation: slideInAndOut 4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.unlock-notification-thumb {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.unlock-notification-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.unlock-notification-title {
+  font-family: 'Rajdhani', sans-serif;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 0 3px 0;
+}
+
+.unlock-notification-subtitle {
+  font-family: 'Chakra Petch', sans-serif;
+  color: var(--accent-color, #ff3366);
+  font-size: 0.8rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes slideInAndOut {
+  0% { right: -320px; opacity: 0; }
+  10% { right: 20px; opacity: 1; }
+  90% { right: 20px; opacity: 1; }
+  100% { right: -320px; opacity: 0; }
+}
+

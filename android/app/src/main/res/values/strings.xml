@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">fatal-error-isekai</string>
+    <string name="title_activity_main">fatal-error-isekai</string>
+    <string name="package_name">com.fatalerror.isekai</string>
+    <string name="custom_url_scheme">com.fatalerror.isekai</string>
+</resources>

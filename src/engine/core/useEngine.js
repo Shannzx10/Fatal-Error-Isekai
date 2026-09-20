@@ -1,8 +1,9 @@
 // src/engine/core/useEngine.js
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { playBGM, stopBGM, playSFX, playVoice, stopVoice } from './audioManager';
+import { playBGM, stopBGM, playSFX, playVoice, stopVoice, resumePendingAudio } from './audioManager';
 import { saveAutoSave, clearAutoSave, getAutoSave } from './saveManager';
 import { unlockCollection } from './collectionManager';
+import collectionsData from '../../game/collectionsData.json';
 
 export function useEngine(script) {
   // Ambil state awal dari autosave jika ada
@@ -20,6 +21,10 @@ export function useEngine(script) {
   const [isAuto, setIsAuto] = useState(false);
   const [isSkip, setIsSkip] = useState(false);
 
+  // State untuk Notifikasi Unlock Collection & Data Ending
+  const [unlockNotification, setUnlockNotification] = useState(null);
+  const [achievedEnding, setAchievedEnding] = useState(null);
+
   const currentScene = script[currentSceneId];
   const currentLine = currentScene ? currentScene.lines[currentLineIndex] : null;
 
@@ -33,7 +38,9 @@ export function useEngine(script) {
     const speakerToSlot = {};
     
     if (currentScene && currentScene.lines) {
-      for (let i = 0; i <= currentLineIndex; i++) {
+      // Pastikan kita tidak melampaui batas index array
+      const maxIndex = Math.min(currentLineIndex, currentScene.lines.length - 1);
+      for (let i = 0; i <= maxIndex; i++) {
         const line = currentScene.lines[i];
         if (line.bg !== undefined) bg = line.bg;
         if (line.video !== undefined) video = line.video;
@@ -123,7 +130,27 @@ export function useEngine(script) {
 
     // --- LOGIKA COLLECTION UNLOCK ---
     if (currentLine.unlockCollection) {
-      unlockCollection(currentLine.unlockCollection);
+      const isNew = unlockCollection(currentLine.unlockCollection);
+      
+      // Ambil data collection untuk notifikasi dan ending screen
+      const collectionItem = collectionsData.find(c => c.id === currentLine.unlockCollection);
+      
+      if (collectionItem) {
+        if (isNew) {
+          // Trigger notifikasi jika benar-benar baru terbuka
+          setUnlockNotification(collectionItem);
+          
+          // Hilangkan notifikasi setelah 4 detik
+          setTimeout(() => {
+            setUnlockNotification(null);
+          }, 4000);
+        }
+        
+        // Simpan data ending jika tipe-nya ending (untuk ditampilkan di layar akhir)
+        if (collectionItem.type === 'ending') {
+          setAchievedEnding(collectionItem);
+        }
+      }
     }
 
     if (currentLine.text) {
@@ -146,6 +173,8 @@ export function useEngine(script) {
   }, [currentLine, currentSceneId, currentLineIndex]);
 
   const nextLine = useCallback(() => {
+    resumePendingAudio(); // Paksa jalankan audio yang tertahan kebijakan autoplay browser
+
     if (!currentScene) return;
 
     if (currentLineIndex < currentScene.lines.length - 1) {
@@ -153,6 +182,9 @@ export function useEngine(script) {
     } else if (currentScene.nextScene) {
       setCurrentSceneId(currentScene.nextScene);
       setCurrentLineIndex(0);
+    } else {
+      // Jika di baris terakhir dan tidak ada nextScene, berarti game tamat
+      setCurrentLineIndex((prev) => prev + 1);
     }
   }, [currentScene, currentLineIndex]);
 
@@ -181,6 +213,8 @@ export function useEngine(script) {
     setHistory([]); 
     setIsAuto(false);
     setIsSkip(false);
+    setAchievedEnding(null);
+    setUnlockNotification(null);
     stopBGM();
     stopVoice();
     clearAutoSave(); // Bersihkan auto-save saat pemain kembali ke Main Menu secara sengaja
@@ -223,5 +257,7 @@ export function useEngine(script) {
     toggleAuto,
     toggleSkip,
     isEnd: !currentLine && !currentScene?.nextScene,
+    unlockNotification,
+    achievedEnding,
   };
 }

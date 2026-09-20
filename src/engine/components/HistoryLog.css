@@ -124,11 +124,3 @@
   font-size: 1rem;
 }
 
-@media (max-width: 900px), (max-height: 600px) {
-  .history-container { width: 95%; height: 90%; }
-  .history-header { padding: 10px 15px; }
-  .history-title { font-size: 1.2rem; }
-  .history-content { padding: 15px; gap: 10px; }
-  .history-speaker { font-size: 1rem; }
-  .history-text { font-size: 1.1rem; }
-}

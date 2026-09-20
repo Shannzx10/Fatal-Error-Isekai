@@ -13,8 +13,8 @@ export function Stage({ background, video, onVideoEnd, enableTransitions = true,
   const videoRef = useRef(null);
 
   useEffect(() => {
-    // Cek apakah ada perubahan pada background atau video
-    if (background !== currentBg || video !== currentVid) {
+    // Fungsi untuk memulai transisi setelah aset siap
+    const startTransition = () => {
       if (enableTransitions) {
         setPrevBg(currentBg);
         setPrevVid(currentVid);
@@ -37,6 +37,19 @@ export function Stage({ background, video, onVideoEnd, enableTransitions = true,
         setPrevBg(null);
         setPrevVid(null);
         setIsTransitioning(false);
+      }
+    };
+
+    if (background !== currentBg || video !== currentVid) {
+      if (background && !video) {
+        // Preload gambar agar transisi tidak termakan oleh waktu download
+        const img = new Image();
+        img.src = AssetManager.get(background);
+        img.onload = startTransition;
+        img.onerror = startTransition; // Lanjut saja kalau gagal
+      } else {
+        // Kalau video atau clear background, langsung transisi
+        startTransition();
       }
     }
   }, [background, video, currentBg, currentVid, enableTransitions]);

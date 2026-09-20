@@ -74,7 +74,7 @@
 }
 
 .menu-nav {
-  margin-top: 10vh; /* Jarak PASTI antara judul dan menu menggunakan relative margin */
+  margin-top: 10%; /* Jarak PASTI antara judul dan menu menggunakan relative margin */
   display: flex;
   flex-direction: column;
   gap: 0.2rem; 
@@ -153,8 +153,3 @@
   }
 }
 
-@media (max-height: 600px) {
-  .title-fatal, .title-isekai { font-size: 2rem; }
-  .menu-btn { font-size: 1.1rem; }
-  .menu-nav { margin-top: 5vh; } /* Jarak diperkecil jika layar pendek (HP) */
-}

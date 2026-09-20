@@ -15,42 +15,20 @@ body, html {
 #root {
   width: 100%;
   height: 100%;
-  /* Default untuk layar yang memang landscape */
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #000; /* Letterboxing color */
 }
 
-/* Container utama game agar proporsi tetap terjaga (16:9) */
+/* FIXED RESOLUTION DYNAMIC WIDTH (Base Height 720px) */
 .game-container {
   position: relative;
-  width: 100vw;
-  height: 56.25vw; /* 16:9 Aspect Ratio */
-  max-height: 100vh;
-  max-width: 177.78vh; /* 16:9 Aspect Ratio */
+  height: 720px;
   background-color: #000;
   overflow: hidden;
-}
-
-/* MAGIC TRICK: Memaksa orientasi landscape via CSS Rotate jika layar portrait */
-@media screen and (orientation: portrait) {
-  #root {
-    /* Menukar width dan height, lalu di-rotate 90 derajat */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100vh;
-    height: 100vw;
-    transform: translate(-50%, -50%) rotate(90deg);
-    transform-origin: center center;
-  }
-  
-  .game-container {
-    width: 100vh;
-    height: 56.25vh; /* 16:9 dari tinggi layar awal */
-    max-height: 100vw;
-    max-width: 177.78vw;
-  }
+  transform-origin: center center;
+  /* Transform scale dan width akan disuntikkan via React (JS) */
 }
 
 .end-screen {

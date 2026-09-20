@@ -84,6 +84,7 @@
       },
       {
         "speaker": "Kurogane Shannz",
+        "spriteRight": "assets/characters/shannz_normal.png",
         "text": "Sebaiknya aku balas apa ya?",
         "choices": [
           {
@@ -220,6 +221,7 @@
       },
       {
         "speaker": "Kurogane Shannz",
+        "spriteRight": "assets/characters/shannz_panic.png",
         "text": "Gila! Aku harus menghentikan ini!",
         "choices": [
           {
@@ -242,6 +244,7 @@
       },
       {
         "speaker": "Kurogane Shannz",
+        "spriteCenter": "assets/characters/shannz_panic.png",
         "text": "Mati kau PC sialaaaan—!"
       },
       {
@@ -254,7 +257,9 @@
       },
       {
         "unlockCollection": "bad_ending_01",
-        "text": "Developer kita yang malang tewas bahkan sebelum cerita Isekai-nya dimulai. Sungguh ironis. \n\n[BAD ENDING 01: Tersetrum Sebelum Berkembang]"
+        "bg": "assets/backgrounds/ending_bad_electrocution.jpg",
+        "bgm": "assets/sounds/ending_sad_sting.mp3",
+        "text": "Developer kita yang malang tewas bahkan sebelum cerita Isekai-nya dimulai. Ars Chronicle dirilis dua minggu kemudian oleh timnya secara anumerta — dengan bug collision di Hutan Eldoria yang tidak pernah sempat ia perbaiki.\n\nDi suatu tempat di dunia lain, seorang ksatria berambut perak menatap langit kosong, menunggu seseorang yang tidak akan pernah datang.\n\n[BAD ENDING 01: Tersetrum Sebelum Berkembang]"
       }
     ]
   },
@@ -274,699 +279,311 @@
         "text": "Tubuhnya terangkat ke udara. Dalam sekejap, ia tersedot ke dalam layar monitornya sendiri. Sensasinya seperti dilemparkan ke dalam mesin cuci yang berputar dengan kecepatan cahaya."
       }
     ],
-    "nextScene": "waking_up_isekai"
+    "nextScene": "arrival_isekai"
   },
-  "waking_up_isekai": {
+  "arrival_isekai": {
     "lines": [
       {
-        "bg": "clear",
-        "bgm": "assets/sounds/forest_ambient.mp3",
-        "text": "..."
-      },
-      {
-        "text": "Kicauan burung yang asing terdengar di kejauhan. Aroma tanah basah dan dedaunan segar menusuk hidung."
+        "bg": "assets/backgrounds/isekai_forest_clearing.jpg",
+        "bgm": "assets/sounds/isekai_forest_bgm.mp3",
+        "text": "Hangat. Itu hal pertama yang ia rasakan. Bukan hangat monitor yang biasa menyinari wajahnya sampai jam tiga pagi, tapi hangat yang datang dari atas — matahari sungguhan, menembus dedaunan yang bergoyang pelan."
       },
       {
         "speaker": "Kurogane Shannz",
-        "text": "Ugh... kepalaku... rasanya seperti habis di-compile ulang tanpa RAM yang cukup..."
+        "text": "...ugh... kepalaku...",
+        "spriteCenter": "assets/characters/shannz_dizzy.png"
       },
       {
-        "bg": "assets/backgrounds/mystic_forest.jpg",
-        "text": "Ia perlahan membuka mata. Hal pertama yang dilihatnya adalah kanopi daun berwarna kebiruan yang ditembus cahaya matahari senja."
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Daun... biru? Tunggu, di mana atap kamarku?",
-        "spriteRight": "assets/characters/shannz_confused.png"
-      },
-      {
-        "text": "Kurogane bangkit duduk. Ia berada di tengah hutan lebat dengan pepohonan raksasa bercahaya mistis. Ia mengusap matanya, lalu menatap tangannya sendiri."
+        "text": "Ia mengerjapkan mata. Rerumputan hijau setinggi lutut, pepohonan raksasa dengan tekstur yang... terlalu detail untuk pixel-art buatannya sendiri. Suara burung asing bersahutan di kejauhan."
       },
       {
         "speaker": "Kurogane Shannz",
-        "text": "(Tubuhku masih sama. Bajuku masih kaus hitam lusuh yang sama. Tapi... resolusi tempat ini... ini bukan pixel-art atau low-poly. Ini benar-benar nyata!)",
-        "spriteRight": "assets/characters/shannz_shocked.png"
+        "text": "Ini... bukan kamar kosku. Ini hutan? Kenapa aku ada di hutan?!",
+        "spriteCenter": "assets/characters/shannz_shocked.png"
       },
       {
-        "sfx": "assets/sounds/water_splash.mp3",
-        "text": "Tiba-tiba, telinganya menangkap suara gemericik air yang cukup dekat. Seperti suara seseorang yang sedang... mandi."
+        "text": "Ia mencubit lengannya sendiri, keras. Sakit. Sangat sakit, sampai matanya berair. Ini bukan mimpi."
       },
       {
         "speaker": "Kurogane Shannz",
-        "text": "(Ada sungai di dekat sini? Mungkin ada orang yang bisa kutanya. Hutan dengan daun biru... rasanya aku pernah mendesain tempat ini. Hutan Eldoria?)",
-        "spriteRight": "assets/characters/shannz_serious.png"
-      },
-      {
-        "text": "Mengendap-endap, Kurogane menyingkap semak-semak yang rimbun, mencari sumber suara air tersebut."
+        "text": "Oke, oke, tenang, Kurogane. Terakhir yang kuingat: layar melengkung, aku ketarik masuk, terus... gelap. Jangan bilang aku beneran... masuk ke dalam Ars Chronicle?",
+        "spriteCenter": "assets/characters/shannz_sweat.png"
       }
     ],
-    "nextScene": "the_bath_encounter"
+    "nextScene": "status_window"
   },
-  "the_bath_encounter": {
+  "status_window": {
     "lines": [
       {
-        "bg": "assets/backgrounds/moonlight_spring.jpg",
-        "bgm": "assets/sounds/romantic_harp.mp3",
-        "text": "Di balik semak-semak, terdapat sebuah mata air suci yang memancarkan pendaran sihir ringan."
+        "bg": "assets/backgrounds/isekai_forest_clearing.jpg",
+        "text": "Saat ia berdiri dan mengibaskan rumput dari celana tidurnya, sebuah panel biru transparan berkedip muncul di sudut penglihatannya — seolah melayang di udara, seperti HUD game yang ia kenal betul."
       },
       {
-        "text": "Namun, bukan mata air itu yang membuat jantung Kurogane seakan berhenti berdetak."
-      },
-      {
-        "unlockCollection": "cg_elise_bath",
-        "text": "Di tengah kolam, membelakangi Kurogane, seorang wanita sedang menyeka tubuhnya. Rambut peraknya yang panjang menempel pada kulit putih mulusnya yang basah, memperlihatkan lekuk punggung yang sempurna."
-      },
-      {
-        "text": "Tetesan air mengalir turun melewati bahunya yang ramping, menyusuri pinggangnya, dan menghilang di balik permukaan air yang jernih. Pemandangan itu begitu indah, erotis, namun entah kenapa terasa sakral."
+        "speaker": "Sistem",
+        "text": "[STATUS WINDOW]\nNama: Kurogane Shannz\nLv. 1 | HP: 100/100 | MP: 20/20\nSTR: 5 (Default_Unbalanced_TestingValue)\nAGI: 5 (Default_Unbalanced_TestingValue)"
       },
       {
         "speaker": "Kurogane Shannz",
-        "text": "(I-Itu... tidak mungkin...)",
-        "spriteRight": "assets/characters/shannz_blush.png"
-      },
-      {
-        "text": "Kurogane tahu persis siapa dia. Dari helai rambut peraknya, postur tubuhnya, hingga aura yang dipancarkannya. Dia adalah Elise von Aethelgard."
+        "text": "...tunggu. TUNGGU. Ini kan template stat debug yang aku buat buat testing doang! Aku belum sempet balancing angka-angka ini sama sekali!",
+        "spriteCenter": "assets/characters/shannz_shocked.png"
       },
       {
         "speaker": "Kurogane Shannz",
-        "text": "(Astaga... proporsi yang kubuat di Blender ternyata... di dunia nyata... sangat... sangat... BERBAHAYA!!)",
-        "spriteRight": "assets/characters/shannz_nosebleed.png"
+        "text": "Jadi maksudnya... aku bukan cuma masuk ke dalam duniaku sendiri. Aku masuk sebagai karakter dengan stat paling apes yang pernah ada di seluruh basis data game ini.",
+        "spriteCenter": "assets/characters/shannz_sweat.png"
       },
       {
-        "text": "Glek. Suara ludah Kurogane terdengar luar biasa keras. Ditambah lagi, kakinya tak sengaja menginjak ranting kering."
-      },
+        "text": "Ia menelan ludah. Kalau statusnya benar-benar seburuk itu, satu hal yang pasti: ia harus berdoa semoga tidak ada satupun monster level rendah pun yang lewat sekarang."
+      }
+    ],
+    "nextScene": "first_threat"
+  },
+  "first_threat": {
+    "lines": [
       {
-        "sfx": "assets/sounds/twig_snap.mp3",
-        "text": "KRAK!"
-      },
-      {
-        "bgm": "stop",
-        "text": "Gerakan wanita di dalam air itu terhenti secara instan."
-      },
-      {
-        "speaker": "Elise",
-        "text": "...Siapa di sana?!"
-      },
-      {
-        "sfx": "assets/sounds/sword_draw.mp3",
-        "text": "Dalam sekejap mata, air kolam bergejolak. Wanita itu melompat keluar dari air. Sebuah pedang bercahaya suci terwujud di tangan kanannya."
-      },
-      {
-        "bg": "assets/backgrounds/moonlight_spring.jpg",
-        "bgm": "assets/sounds/battle_tension.mp3",
-        "speaker": "Elise",
-        "text": "Keluarlah, dasar pengintip kotor! Atau kutebas kepalamu bersama semak-semak itu!",
-        "spriteCenter": "assets/characters/elise_towel_angry.png"
-      },
-      {
-        "text": "Elise menodongkan pedangnya ke semak-semak. Ia hanya sempat menyambar selembar handuk putih tipis yang kini melilit tubuhnya, memperlihatkan belahan dadanya yang naik turun karena marah."
+        "bg": "assets/backgrounds/isekai_forest_clearing.jpg",
+        "sfx": "assets/sounds/slime_squelch.mp3",
+        "bgm": "assets/sounds/tense_encounter_bgm.mp3",
+        "text": "Seolah dunia mendengar doanya dan memutuskan untuk mengabaikannya, semak-semak di depan bergetar. Sesuatu yang kenyal berwarna biru muncul, bentuknya berkedip-kedip tidak stabil, seperti tekstur yang gagal termuat sempurna."
       },
       {
         "speaker": "Kurogane Shannz",
-        "text": "Mati aku. HP-ku cuma 10, dia level 50!",
+        "spriteRight": "assets/characters/shannz_panic.png",
+        "text": "Itu... slime? SLIME BUATANKU SENDIRI YANG NGE-GLITCH?!"
+      },
+      {
+        "speaker": "Slime Glitch",
+        "spriteLeft": "assets/characters/slime_glitch.png",
+        "text": "RRGH... GRK... ARGHSSS!!"
+      },
+      {
+        "text": "Slime itu bergerak jauh lebih cepat dari yang seharusnya ia program — jelas ada nilai variabel yang error di kode pergerakannya. Ia mendekat, meninggalkan jejak clipping aneh di rerumputan."
+      },
+      {
+        "speaker": "Kurogane Shannz",
+        "spriteRight": "assets/characters/shannz_panic.png",
+        "text": "Oke, oke, mikir Kurogane! Kamu developernya, bukan pemainnya! Kamu nggak pernah latihan buat hal kayak gini!",
         "choices": [
           {
-            "text": "Keluar sambil sujud minta maaf dengan panik.",
-            "target": "apologize_frantic"
+            "text": "Coba lari sekuat tenaga!",
+            "target": "run_scene"
           },
           {
-            "text": "Keluar sambil memuji 'pemandangan' barusan.",
-            "target": "admire_view"
+            "text": "Lawan pakai apa saja yang ada di sekitar!",
+            "target": "fight_scene_intro"
           }
         ]
       }
     ]
   },
-  "admire_view": {
+  "run_scene": {
     "lines": [
       {
+        "bg": "assets/backgrounds/isekai_forest_clearing.jpg",
+        "text": "Kurogane membalikkan badan dan berlari sekencang mungkin — atau setidaknya, sekencang yang bisa dilakukan tubuh dengan AGI 5. Kakinya tersandung akar pohon hampir seketika."
+      },
+      {
         "speaker": "Kurogane Shannz",
-        "text": "Maaf! Aku tidak bermaksud mengintip! Tapi harus kuakui, render fisika yang kubuat benar-benar sempurna di kehidupan nyata...",
-        "spriteRight": "assets/characters/shannz_smirk.png"
+        "spriteRight": "assets/characters/shannz_panic.png",
+        "text": "Ini bukan waktunya jadi protagonis lambat, tolong!"
       },
       {
-        "speaker": "Elise",
-        "text": "A... Apa yang kau bicarakan, dasar iblis mesum!!! TERIMALAH PENGHAKIMAN SUCI!!",
-        "spriteCenter": "assets/characters/elise_towel_blush_angry.png"
+        "speaker": "Slime Glitch",
+        "spriteLeft": "assets/characters/slime_glitch.png",
+        "text": "SKREEE... ARGHSSS!!"
       },
       {
-        "sfx": "assets/sounds/kick_hit.mp3",
-        "text": "Kaki panjang Elise melesat dan menghantam wajah Kurogane dengan kecepatan supersonik."
-      },
-      {
-        "bg": "clear",
-        "text": "Kurogane terlempar lima meter ke belakang sebelum kesadarannya pudar."
+        "text": "Slime itu semakin dekat, tubuhnya yang kenyal bersiap menerkam dari belakang. Kurogane menutup mata, pasrah pada nasib pixel-art-nya sendiri."
       }
     ],
-    "nextScene": "interrogation_start"
+    "nextScene": "elise_saves"
   },
-  "apologize_frantic": {
+  "fight_scene_intro": {
     "lines": [
       {
-        "text": "Kurogane langsung melompat keluar dan bersujud ala dogeza di atas tanah."
+        "bg": "assets/backgrounds/isekai_forest_clearing.jpg",
+        "text": "Kurogane meraih dahan patah di tanah dan mengayunkannya sekuat tenaga ke arah slime itu. Ayunannya berhasil mengenai sasaran — namun bukannya pecah, slime itu justru membelah diri jadi dua."
       },
       {
         "speaker": "Kurogane Shannz",
-        "text": "A-Aku minta maaf!! Mataku buta, aku tidak melihat apa-apa! Nol pixel!",
-        "spriteRight": "assets/characters/shannz_dogeza.png"
+        "spriteRight": "assets/characters/shannz_shocked.png",
+        "text": "TIDAK, TIDAK, SEHARUSNYA DIA NGGAK BISA SPLIT! ITU FITUR BOSS TIER 3, BUKAN SLIME BIASA! SIAPA YANG NULIS KODE INI—oh iya, aku."
       },
       {
-        "speaker": "Elise",
-        "text": "Pakaian yang aneh... Kau pasti mata-mata dari Fraksi Iblis!",
-        "spriteCenter": "assets/characters/elise_towel_angry.png"
+        "speaker": "Slime Glitch (x2)",
+        "spriteLeft": "assets/characters/slime_glitch.png",
+        "spriteCenter": "assets/characters/slime_glitch.png",
+        "text": "GRRH-GRRH... ARGHSS-ARGHSS!!"
       },
       {
-        "text": "Sebelum Kurogane bisa menjelaskan, Elise mengayunkan tangannya. Sulur cahaya suci melesat dan mengikat tubuh Kurogane."
+        "text": "Dua slime kini mengelilinginya. Dahan patah di tangannya terasa sangat, sangat tidak cukup."
       }
     ],
-    "nextScene": "interrogation_start"
+    "nextScene": "elise_saves"
   },
-  "interrogation_start": {
+  "elise_saves": {
     "lines": [
       {
-        "bg": "assets/backgrounds/mystic_forest_night.jpg",
-        "bgm": "assets/sounds/serious_talk.mp3",
-        "text": "Sepuluh menit kemudian. Kurogane duduk terikat. Elise sudah mengenakan armor peraknya."
+        "sfx": "assets/sounds/sword_slash.mp3",
+        "text": "Sebuah kilatan perak membelah udara. Dalam satu gerakan, slime-slime itu terpotong bersih dan hancur menjadi partikel cahaya yang berpendar sebelum lenyap."
       },
       {
-        "speaker": "Elise",
-        "text": "Jawab dengan jujur. Siapa kau dan bagaimana kau bisa menembus barier suci Hutan Eldoria?",
-        "spriteCenter": "assets/characters/elise_knight_serious.png"
+        "unlockCollection": "cg_elise_first_meeting",
+        "bg": "assets/backgrounds/isekai_forest_clearing.jpg",
+        "spriteLeft": "assets/characters/elise_battle.png",
+        "speaker": "???",
+        "text": "Ceroboh. Berkeliaran tanpa senjata di area yang jelas-jelas terdaftar sebagai zona monster level rendah."
       },
       {
-        "speaker": "Kurogane Shannz",
-        "text": "(Sial... Tapi tunggu, aku kan Dev-nya! Aku tahu segala rahasianya!)"
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Namaku Kurogane. Dan percayalah, Elise, aku bukanlah musuh. Aku bahkan tahu rahasia terdalammu!"
-      },
-      {
-        "speaker": "Elise",
-        "text": "Hah! Trik murahan. Aku tidak punya rahasia dari Ordo!"
+        "text": "Kurogane mendongak. Rambut perak panjang, zirah putih keperakan yang berkilau kena matahari sore, sepasang mata biru sedingin es. Ia mengenal wajah itu — karena ia sendiri yang menggambar setiap detailnya."
       },
       {
         "speaker": "Kurogane Shannz",
-        "text": "Oh ya? Bagaimana dengan fakta bahwa... kau punya tanda lahir berbentuk bulan sabit kecil di paha dalam sebelah kirimu?",
-        "spriteRight": "assets/characters/shannz_smirk.png"
-      },
-      {
-        "text": "Wajah dingin Elise seketika hancur, digantikan rona merah padam."
+        "text": "(Elise... von Aethelgard. Ini... beneran dia. Berdiri di depanku. Bernapas. Hidup.)",
+        "spriteRight": "assets/characters/shannz_shocked.png"
       },
       {
         "speaker": "Elise",
-        "text": "K-K-K-KAU... B-BAGAIMANA BISA KAU TAHU SOAL ITU?!",
-        "spriteCenter": "assets/characters/elise_knight_blush_extreme.png"
+        "text": "Kenapa menatapku seperti itu? Dan pakaian apa itu yang kau kenakan? Bukan seragam prajurit, bukan pula jubah pengelana. Kau bukan penduduk sekitar sini.",
+        "spriteLeft": "assets/characters/elise_serious.png"
       }
     ],
-    "nextScene": "campfire_truce"
+    "nextScene": "elise_interrogation"
   },
-  "campfire_truce": {
+  "elise_interrogation": {
     "lines": [
       {
-        "bg": "assets/backgrounds/campfire_night.jpg",
-        "bgm": "assets/sounds/crickets_night.mp3",
-        "text": "Setengah jam berlalu. Setelah Kurogane diancam pedang untuk tutup mulut soal paha, Elise melonggarkan ikatan. Mereka duduk di depan api unggun."
+        "bg": "assets/backgrounds/isekai_forest_clearing.jpg",
+        "speaker": "Kurogane Shannz",
+        "text": "Eh— itu, aku... tersesat. Iya, tersesat! Jauh dari rumah.",
+        "spriteRight": "assets/characters/shannz_sweat.png"
       },
       {
         "speaker": "Elise",
-        "text": "Jadi... kau mengklaim dirimu sebagai 'Pelihat'?",
-        "spriteLeft": "assets/characters/elise_knight_skeptical.png"
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Tepat sekali. Aku tahu masa lalu, masa kini, dan masa depan dunia ini. Ars Chronicle.",
-        "spriteRight": "assets/characters/shannz_confident.png"
+        "text": "Tersesat. Tanpa senjata, tanpa lambang guild, tanpa perbekalan. Di tengah hutan yang bahkan ksatria berpengalaman pun waspada melewatinya.",
+        "spriteLeft": "assets/characters/elise_serious.png"
       },
       {
         "speaker": "Elise",
-        "text": "Omong kosong. Jika kau benar-benar Pelihat, buktikan. Apa yang membawaku ke hutan ini malam ini?"
-      },
-      {
-        "text": "Kurogane tersenyum simpul. Ini adalah quest pengenalan dari gamenya."
+        "text": "Kalau kau adalah monster yang menyamar jadi manusia, sebaiknya kau menyerah sekarang juga. Aku tidak akan segan.",
+        "spriteLeft": "assets/characters/elise_battle.png"
       },
       {
         "speaker": "Kurogane Shannz",
-        "text": "Kau sedang mencari artefak Core Fragment yang hilang dicuri oleh bandit, yang rencananya akan ditransaksikan besok di pinggiran kota Oakhaven."
+        "text": "T-tunggu dulu! Aku manusia biasa, sumpah! Cuma manusia biasa yang lagi mengalami hari paling aneh dalam hidupnya!",
+        "spriteRight": "assets/characters/shannz_panic.png"
+      },
+      {
+        "text": "Elise menatapnya lama, menimbang. Pedangnya belum sepenuhnya diturunkan, tapi sorot matanya sedikit melunak — mungkin karena caranya panik terlihat terlalu jujur untuk dibuat-buat."
       },
       {
         "speaker": "Elise",
-        "text": "...Itu informasi rahasia militer level A. Bagaimana bisa...",
-        "spriteLeft": "assets/characters/elise_knight_shocked.png"
+        "text": "...baiklah. Untuk sementara, aku akan percaya. Tapi kau harus menjelaskan dirimu sendiri.",
+        "choices": [
+          {
+            "text": "Jujur bilang kalau ia entah kenapa tahu banyak tentang dunia ini.",
+            "target": "answer_honest"
+          },
+          {
+            "text": "Bercanda untuk mencairkan suasana.",
+            "target": "answer_joke"
+          }
+        ],
+        "spriteLeft": "assets/characters/elise_soft.png"
+      }
+    ]
+  },
+  "answer_honest": {
+    "lines": [
+      {
+        "bg": "assets/backgrounds/isekai_forest_clearing.jpg",
+        "speaker": "Kurogane Shannz",
+        "text": "Yang aneh... aku merasa tahu banyak hal tentang tempat ini. Nama-nama daerah, bahkan namamu, meskipun kita baru saja bertemu. Aku juga nggak ngerti kenapa.",
+        "spriteRight": "assets/characters/shannz_serious.png"
       },
       {
-        "speaker": "Kurogane Shannz",
-        "text": "Sudah kubilang, kan? Nah, lebih baik kau istirahat. Besok pagi, saat matahari baru sejengkal, kita akan diserang sekumpulan Slime. Pastikan pedangmu tajam."
+        "speaker": "Elise",
+        "text": "...kau tahu namaku? Aku belum menyebutkannya.",
+        "spriteLeft": "assets/characters/elise_serious.png"
+      },
+      {
+        "speaker": "Elise",
+        "text": "Aneh. Tapi entah kenapa, aku tidak merasakan niat jahat darimu. Baiklah, akan kuawasi kau sampai kau bisa menjelaskan semuanya dengan benar.",
+        "spriteLeft": "assets/characters/elise_soft.png"
       }
     ],
-    "nextScene": "morning_training_encounter"
+    "nextScene": "village_travel"
   },
-  "morning_training_encounter": {
+  "answer_joke": {
     "lines": [
       {
-        "bg": "assets/backgrounds/mystic_forest_morning.jpg",
-        "bgm": "assets/sounds/morning_birds.mp3",
-        "text": "Pagi harinya. Kurogane terbangun oleh suara tebasan angin."
-      },
-      {
-        "unlockCollection": "cg_elise_morning_training",
-        "text": "Ia mengucek matanya. Di kejauhan, Elise sedang berlatih mengayunkan pedangnya. Namun yang membuat Kurogane terpana, Elise melepas armor tebalnya dan hanya mengenakan tunik latihan yang tipis."
-      },
-      {
-        "text": "Setiap ayunan pedang membuat keringat menetes membasahi kerah tuniknya. Kain itu sedikit menempel, mempertegas lekuk tubuhnya yang bugar namun tetap feminin."
-      },
-      {
+        "bg": "assets/backgrounds/isekai_forest_clearing.jpg",
         "speaker": "Kurogane Shannz",
-        "text": "(Terima kasih Tuhan atas resolusi dunia nyata ini. Desain karakterku benar-benar mahakarya!)",
+        "text": "Aku ini cuma pengelana tampan yang tersesat. Kebetulan butuh pemandu jalan yang gagah berani. Kau available?",
         "spriteRight": "assets/characters/shannz_smile.png"
       },
       {
         "speaker": "Elise",
-        "text": "Jangan menatapku seperti itu, Pelihat. Kau bilang akan ada serangan Slime? Hutan ini terlalu tenang untuk...",
-        "spriteLeft": "assets/characters/elise_tunic_normal.png"
+        "text": "...pengelana tampan? Berani sekali menyebut dirimu sendiri begitu di depan orang yang baru saja menyelamatkan nyawamu.",
+        "spriteLeft": "assets/characters/elise_serious.png"
       },
       {
-        "sfx": "assets/sounds/slime_squelch.mp3",
-        "text": "SQUELCH. SQUELCH."
+        "text": "Namun sudut bibirnya sedikit tertarik, nyaris tak kentara, sebelum ia buru-buru menetralkan ekspresinya kembali."
       },
       {
-        "bgm": "assets/sounds/battle_theme_light.mp3",
-        "text": "Dari balik pepohonan, lima ekor monster lendir berwarna hijau pekat muncul. Ukurannya sebesar anjing dewasa."
+        "speaker": "Elise",
+        "text": "Hmph. Ikut aku. Setidaknya sampai desa terdekat, sebelum monster lain tertarik pada baumu yang aneh itu.",
+        "spriteLeft": "assets/characters/elise_soft.png"
       }
     ],
-    "nextScene": "slime_ambush"
+    "nextScene": "village_travel"
   },
-  "slime_ambush": {
+  "village_travel": {
     "lines": [
       {
-        "speaker": "Elise",
-        "text": "Slime Hutan? Mereka biasanya tidak agresif! Mundur, biar aku yang urus!",
-        "spriteCenter": "assets/characters/elise_tunic_combat.png"
-      },
-      {
-        "text": "Elise menerjang maju. Pedangnya menebas dua slime sekaligus. Namun, slime ketiga menyemburkan cairan hijau yang lengket."
-      },
-      {
-        "sfx": "assets/sounds/acid_splash.mp3",
-        "unlockCollection": "cg_slime_trouble",
-        "text": "SPLAT! Cairan itu mengenai sebagian lengan dan pinggang Elise. Terdengar suara mendesis saat cairan asam itu melelehkan kain tuniknya."
+        "bg": "assets/backgrounds/isekai_forest_path.jpg",
+        "bgm": "assets/sounds/village_evening_bgm.mp3",
+        "text": "Mereka berjalan berdampingan menyusuri jalan setapak sempit, langit perlahan berubah jingga. Elise memimpin di depan, waspada terhadap sekitar meski terlihat tenang."
       },
       {
         "speaker": "Elise",
-        "text": "Kyaa! Cairan apa ini?! Bajuku...!",
-        "spriteLeft": "assets/characters/elise_tunic_torn.png"
-      },
-      {
-        "text": "Kurogane menyadari ada yang salah. Slime di zona ini seharusnya level 1 dan tidak punya skill 'Acid Spray'!"
+        "text": "Belakangan ini, monster-monster berperilaku aneh. Muncul di tempat yang seharusnya tidak ada monster, bergerak dengan pola yang tidak wajar. Kerajaan mulai khawatir.",
+        "spriteLeft": "assets/characters/elise_serious.png"
       },
       {
         "speaker": "Kurogane Shannz",
-        "text": "(Kode gamenya rusak! Ini efek dari glitch semalam!)"
+        "text": "(Perilaku aneh... pola nggak wajar... itu bukan fenomena dunia ini. Itu bug. Bug yang sama yang menyeretku ke sini. Apa artinya seluruh dunia ini ikut error karena aku?)",
+        "spriteRight": "assets/characters/shannz_serious.png"
       },
       {
-        "text": "Tiba-tiba, tanpa disadari Kurogane, sebuah panel transparan melayang di pergelangan tangannya. Itu adalah Developer Console!"
-      },
-      {
-        "unlockCollection": "secret_dev_ui",
-        "speaker": "Kurogane Shannz",
-        "text": "UI Developer?! Kalo aku bisa ngetik command di udara..."
-      },
-      {
-        "text": "Dua slime lain bersiap melompat ke arah Kurogane yang tak bersenjata.",
-        "choices": [
-          {
-            "text": "Ketik command 'Entity.Delete()' ke Slime!",
-            "target": "slime_victory"
-          },
-          {
-            "text": "Lari sembunyi di balik punggung Elise!",
-            "target": "slime_bad_ending"
-          }
-        ]
-      }
-    ]
-  },
-  "slime_bad_ending": {
-    "lines": [
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Elise, tolooong!!"
-      },
-      {
-        "text": "Kurogane berlari pengecut. Namun ia terpeleset cairan slime."
-      },
-      {
-        "sfx": "assets/sounds/slime_eat.mp3",
-        "text": "Slime raksasa melompat dan membungkus kepala Kurogane. Asam pekat langsung bekerja."
-      },
-      {
-        "bg": "clear",
-        "text": "Kurogane merasakan wajahnya meleleh sebelum semuanya gelap."
-      },
-      {
-        "unlockCollection": "bad_ending_02",
-        "text": "[BAD ENDING 02: Meleleh Bersama Bug]\nPelajaran pertama: Developer harus berani menghadapi Bug, bukan lari."
-      }
-    ]
-  },
-  "slime_victory": {
-    "lines": [
-      {
-        "text": "Jari Kurogane menari di udara layaknya mengetik keyboard mekanik tak kasat mata."
+        "text": "Terlalu larut dalam pikirannya, Kurogane tidak menyadari akar pohon menonjol di jalan setapak. Kakinya tersandung."
       },
       {
         "speaker": "Kurogane Shannz",
-        "text": "Target: Slime_03, Slime_04. Execute: Destroy()!"
+        "text": "Woah—!",
+        "spriteRight": "assets/characters/shannz_panic.png"
       },
       {
-        "sfx": "assets/sounds/digital_delete.mp3",
-        "text": "BZZT! Kedua slime yang melompat ke arahnya tiba-tiba pecah menjadi kepingan pixel biru dan lenyap di udara."
+        "text": "Elise refleks menangkap lengannya sebelum ia jatuh sepenuhnya, menariknya kembali berdiri dengan satu tangan. Jarak wajah mereka tiba-tiba sangat dekat."
       },
       {
         "speaker": "Elise",
-        "text": "Sihir macam apa itu?! Tidak ada mantra, tidak ada lingkaran sihir!",
-        "spriteLeft": "assets/characters/elise_tunic_torn_shocked.png"
+        "text": "...hati-hati. Aku tidak menyelamatkanmu dari slime hanya supaya kau mati konyol karena akar pohon.",
+        "spriteLeft": "assets/characters/elise_soft.png"
+      },
+      {
+        "text": "Ia melepaskan pegangannya secepat ia menariknya, wajahnya sedikit memerah sebelum kembali berjalan lebih cepat dari sebelumnya, seolah tidak ingin memberi kesempatan untuk dilihat."
       },
       {
         "speaker": "Kurogane Shannz",
-        "text": "Itu... keistimewaan Pelihat. Namanya 'Sihir Root Access'."
+        "text": "(...oke. Itu terjadi. Itu beneran terjadi.)",
+        "spriteRight": "assets/characters/shannz_smile.png"
       },
       {
-        "speaker": "Kurogane Shannz",
-        "text": "(Sial, cooldown-nya 24 jam?! Sistem gamenya benar-benar membatasi kemampuanku! Setidaknya aku bukan OP yang tak terkalahkan.)"
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Ekhem. Elise... sebelum kita ke kota Oakhaven, sepertinya kau butuh ganti baju. Tunikmu..."
-      },
-      {
-        "text": "Elise menunduk. Tuniknya yang robek akibat asam kini memperlihatkan belahan dadanya dan perutnya yang mulus. Wajahnya merah padam, ia langsung menyilangkan tangan di dada."
+        "bg": "assets/backgrounds/village_gate_dusk.jpg",
+        "text": "Tak lama kemudian, gerbang kayu sebuah desa kecil terlihat di kejauhan, obor-obor mulai dinyalakan satu per satu menyambut senja. Perjalanan Kurogane yang sesungguhnya baru saja dimulai."
       }
     ],
-    "nextScene": "journey_to_oakhaven"
-  },
-  "journey_to_oakhaven": {
-    "lines": [
-      {
-        "bg": "assets/backgrounds/forest_path.jpg",
-        "bgm": "assets/sounds/town_acoustic.mp3",
-        "text": "Setelah membalut bagian yang robek dengan jubah luarnya, mereka berjalan menuju Oakhaven."
-      },
-      {
-        "speaker": "Elise",
-        "text": "Aku masih tidak percaya padamu, tapi sihir anehmu tadi... dan tebakanmu soal Slime... mungkin kau memang berguna untuk Ordo."
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "(Hehe, tsundere khas heroine utama. Aku mendesainnya dengan sempurna.)"
-      },
-      {
-        "text": "Dari kejauhan, tembok batu dan kincir angin kota mulai terlihat. Kota Oakhaven, kota awal petualangan."
-      }
-    ],
-    "nextScene": "oakhaven_gates"
-  },
-  "oakhaven_gates": {
-    "lines": [
-      {
-        "bg": "assets/backgrounds/oakhaven_town.jpg",
-        "sfx": "assets/sounds/crowd_chatter.mp3",
-        "text": "Keramaian pasar, aroma roti panggang, dan suara pandai besi terdengar bersahutan. Semuanya terasa begitu nyata."
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "(Luar biasa... NPC yang cuma kuberikan 3 dialog teks kini berinteraksi satu sama lain bagai manusia hidup!)"
-      },
-      {
-        "speaker": "Elise",
-        "text": "Pertama, kita harus mencari pakaian ganti untukku agar tidak menarik perhatian. Lalu aku akan melapor ke Guild Petualang."
-      }
-    ],
-    "nextScene": "armor_shop"
-  },
-  "armor_shop": {
-    "lines": [
-      {
-        "bg": "assets/backgrounds/tailor_shop.jpg",
-        "bgm": "assets/sounds/shop_theme.mp3",
-        "text": "Di dalam butik Madame Zara."
-      },
-      {
-        "speaker": "Elise",
-        "text": "Tunggu di luar tirai, Kurogane. Kalau kau berani mengintip, kutebas matamu."
-      },
-      {
-        "unlockCollection": "cg_elise_new_outfit",
-        "text": "Beberapa menit kemudian, tirai terbuka. Elise keluar tidak mengenakan armor, melainkan gaun kasual bergaya eropa abad pertengahan dengan bahu terbuka yang manis."
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "(Astaga... Skin Kasual yang harusnya dijual sebagai DLC seharga $4.99 kini kulihat gratis!)",
-        "spriteRight": "assets/characters/shannz_sparkle.png"
-      },
-      {
-        "speaker": "Elise",
-        "text": "A-Apa liat-liat?! Madame Zara bilang ini cocok untuk penyamaran!",
-        "spriteLeft": "assets/characters/elise_casual_blush.png"
-      },
-      {
-        "text": "Di rak sebelah, Kurogane melihat Sepatu Hermes bersayap. Ia ingat ini adalah item buggy yang belum di-patch.",
-        "choices": [
-          {
-            "text": "Pakai Sepatu Hermes itu untuk pamer ke Elise.",
-            "target": "shoes_bad_ending"
-          },
-          {
-            "text": "Abaikan sepatu itu, kita butuh senjata saja.",
-            "target": "shoes_pass"
-          }
-        ]
-      }
-    ]
-  },
-  "shoes_bad_ending": {
-    "lines": [
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Lihat ini, Elise! Aku bisa terbang!"
-      },
-      {
-        "text": "Kurogane memakai sepatu itu. Tiba-tiba sayap di sepatu berputar sekencang baling-baling helikopter."
-      },
-      {
-        "sfx": "assets/sounds/comedy_launch.mp3",
-        "speaker": "Kurogane Shannz",
-        "text": "WAAAAAA—!"
-      },
-      {
-        "text": "Karena bug kecepatan z-axis, Kurogane melesat menembus atap toko, menembus awan, dan terbang ke luar angkasa."
-      },
-      {
-        "unlockCollection": "bad_ending_03",
-        "text": "[BAD ENDING 03: Sepatu Terbang Kematian]\nKamu keluar dari batas map dan mati kehabisan napas di stratosfer."
-      }
-    ]
-  },
-  "shoes_pass": {
-    "lines": [
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "(Mending jangan sentuh barang buggy. Kita perlu isi perut dulu.)"
-      }
-    ],
-    "nextScene": "tavern_night"
-  },
-  "tavern_night": {
-    "lines": [
-      {
-        "bg": "assets/backgrounds/tavern_inside.jpg",
-        "bgm": "assets/sounds/tavern_bard.mp3",
-        "text": "Di Kedai Babi Menari."
-      },
-      {
-        "unlockCollection": "cg_tavern_meal",
-        "text": "Kurogane mengunyah sate daging babi panggang raksasa. Air matanya menetes."
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Enak banget... selama 3 tahun cuma makan mi instan, akhirnya aku makan daging sungguhan..."
-      },
-      {
-        "speaker": "Elise",
-        "text": "Kau ini Oracle atau gelandangan sih? Cepat habiskan. Kita harus ke Guild sekarang."
-      }
-    ],
-    "nextScene": "adventurer_guild"
-  },
-  "adventurer_guild": {
-    "lines": [
-      {
-        "bg": "assets/backgrounds/guild_hall.jpg",
-        "bgm": "assets/sounds/guild_theme.mp3",
-        "text": "Suasana Guild sangat ramai. Di meja resepsionis, berdiri seorang wanita cantik berambut pirang ikal dengan seragam serba ketat."
-      },
-      {
-        "unlockCollection": "cg_guild_lyra",
-        "speaker": "Lyra",
-        "text": "Selamat datang di Guild Oakhaven! Ara~ Nona Elise, Anda membawa pemuda yang manis hari ini~"
-      },
-      {
-        "text": "Lyra mencondongkan tubuhnya ke meja. Kurogane susah payah menjaga pandangannya agar tetap di wajah Lyra, karena 'aset' resepsionis itu dirancang terlalu 'dermawan' oleh dirinya sendiri di masa lalu."
-      },
-      {
-        "speaker": "Elise",
-        "text": "Cukup basa-basinya, Lyra. Kami mengambil quest penyerbuan Gua Gema (Echo Cave). Pencuri Core Fragment bersembunyi di sana."
-      },
-      {
-        "text": "Sebelum pergi, Kurogane mampir ke tong sampah di pojok Guild. Ia mengais sesuatu dan menemukan belati berkarat."
-      },
-      {
-        "unlockCollection": "secret_glitch_dagger",
-        "speaker": "Kurogane Shannz",
-        "text": "(Hehe, Dagger of Null. Senjata sampah yang kutanam sebagai easter egg dev. Attack-nya 1, tapi punya 5% chance untuk men-stun musuh apapun secara instan!)"
-      }
-    ],
-    "nextScene": "echo_cave_entrance"
-  },
-  "echo_cave_entrance": {
-    "lines": [
-      {
-        "bg": "assets/backgrounds/echo_cave.jpg",
-        "bgm": "assets/sounds/cave_drip.mp3",
-        "text": "Udara lembab Gua Gema menusuk tulang. Dinding batu berpendar hijau oleh lumut bercahaya."
-      },
-      {
-        "speaker": "Elise",
-        "text": "Tetap di belakangku, Kurogane. Pencurinya pasti punya penjaga."
-      },
-      {
-        "text": "Namun saat mereka tiba di ruang paling dalam, pencuri itu sudah mati. Tubuhnya hancur. Di atasnya, melayang seekor Kelelawar Raksasa... yang separuh tubuhnya terdistorsi oleh glitch pixel merah!"
-      }
-    ],
-    "nextScene": "echo_cave_boss"
-  },
-  "echo_cave_boss": {
-    "lines": [
-      {
-        "bgm": "assets/sounds/boss_battle_glitch.mp3",
-        "speaker": "Kurogane Shannz",
-        "text": "Itu bukan bos yang kupasang! Ini ulah entitas anomali yang sama dengan yang merusak PC-ku!"
-      },
-      {
-        "sfx": "assets/sounds/monster_roar.mp3",
-        "text": "Monster kelelawar itu memekik. Sayapnya tiba-tiba berubah wujud menjadi puluhan tentakel pixel merah yang melesat ke arah Elise."
-      },
-      {
-        "unlockCollection": "cg_elise_tentacle",
-        "speaker": "Elise",
-        "text": "Kuh! Tentakel apa ini?! Benda ini menyerap energiku!"
-      },
-      {
-        "text": "Elise terjerat erat. Tentakel itu melilit paha, pinggang, dan lengannya, mengangkatnya ke udara. Ia meronta, tapi ikatan itu menembus pertahanan armornya."
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Elise! Bertahanlah! (Sial, UI Developer-ku masih cooldown!)"
-      },
-      {
-        "text": "Kurogane memegang belati rongsokannya.",
-        "choices": [
-          {
-            "text": "Serang kepala monster itu secara frontal!",
-            "target": "cave_bad_ending"
-          },
-          {
-            "text": "Lempar belati Dagger of Null ke sayapnya!",
-            "target": "cave_victory"
-          }
-        ]
-      }
-    ]
-  },
-  "cave_bad_ending": {
-    "lines": [
-      {
-        "text": "Kurogane berlari dan melompat dengan heroik."
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Mati kauuuu!"
-      },
-      {
-        "text": "Kelelawar itu hanya mengibaskan sayapnya. Tubuh Kurogane yang hanya ber-HP 10 terbelah dua. Elise berteriak histeris."
-      },
-      {
-        "unlockCollection": "bad_ending_04",
-        "text": "[BAD ENDING 04: Santapan Kelelawar Glitch]\nStatistik tidak bisa dilawan dengan modal nekat."
-      }
-    ]
-  },
-  "cave_victory": {
-    "lines": [
-      {
-        "text": "Kurogane membidik dengan tenang. Ia percaya pada kode yang ia tulis sendiri."
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Makan ini, RNG 5%!"
-      },
-      {
-        "sfx": "assets/sounds/dagger_throw.mp3",
-        "text": "Belati rongsokan itu melesat dan menancap di sayap monster."
-      },
-      {
-        "sfx": "assets/sounds/glass_shatter.mp3",
-        "text": "Tiba-tiba, seluruh tubuh monster itu membeku. Tulisan 'ERROR: STATUS_STUN' muncul di atas kepalanya dalam huruf merah raksasa."
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Sekarang, Elise!! Lepaskan tenaga penuhmu!"
-      },
-      {
-        "speaker": "Elise",
-        "text": "HAAAAAH! Sacred... CROSS CUT!"
-      },
-      {
-        "text": "Bebas dari tentakel, pedang Elise memancarkan cahaya putih yang menyilaukan. Satu tebasan silang membelah monster itu dan anomali merahnya hingga berkeping-keping."
-      }
-    ],
-    "nextScene": "chapter_1_ending"
-  },
-  "chapter_1_ending": {
-    "lines": [
-      {
-        "bgm": "stop",
-        "bg": "assets/backgrounds/echo_cave_quiet.jpg",
-        "text": "Napas Elise tersengal. Ia jatuh berlutut, kelelahan. Kurogane menghampirinya."
-      },
-      {
-        "speaker": "Elise",
-        "text": "Kau... menyelamatkanku. Benda rongsokan itu... sihir macam apa lagi?"
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Rahasia perusahaan. Yang penting kita dapat ini."
-      },
-      {
-        "text": "Kurogane memungut sebuah kristal biru yang bercahaya—Core Fragment yang mereka cari. Namun, saat disentuh, UI Developer Kurogane menyala sendiri."
-      },
-      {
-        "unlockCollection": "cg_chapter1_end",
-        "speaker": "Console Log",
-        "text": "MESSAGE RECEIVED FROM USER 'UNKNOWN_GOD':\n'Selamat datang di duniaku, Sang Pencipta. Jika ingin kembali, temukan 7 Core Fragment, atau dunia ini akan ku-format ulang bersama nyawamu.'"
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Seseorang membajak sistem root-ku? Siapa yang berani-beraninya..."
-      },
-      {
-        "speaker": "Kurogane Shannz",
-        "text": "Sepertinya perjalananku di dunia Isekai ini... baru saja dimulai."
-      },
-      {
-        "bg": "clear",
-        "text": "--- AKHIR DARI CHAPTER 1 ---"
-      }
-    ]
+    "nextScene": ""
   }
 }

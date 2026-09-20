@@ -12,6 +12,8 @@
 }
 
 .sprite-image {
+  position: absolute;
+  bottom: 0;
   max-height: 100%;
   width: auto;
   object-fit: contain;
@@ -33,17 +35,26 @@
 }
 
 /* Positions */
-.pos-left { left: 10%; }
+.pos-left { left: 15%; }
 .pos-center { left: 50%; transform: translateX(-50%); }
-.pos-right { right: 10%; }
+.pos-right { right: 15%; }
 .pos-center.inactive { transform: translateX(-50%) scale(0.9) translateY(20px); }
 
-/* Simple Animations */
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Transitions */
+.sprite-fade-out {
+  animation: fadeOutSprite 0.3s ease-in-out forwards;
 }
 
-.anim-fade-in {
-  animation: fade-in 0.5s ease-in-out;
+.sprite-fade-in {
+  animation: fadeInSprite 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeOutSprite {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fadeInSprite {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

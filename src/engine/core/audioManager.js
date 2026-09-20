@@ -4,6 +4,8 @@ import { AssetManager } from './assetManager';
 let bgmAudio = new Audio();
 bgmAudio.loop = true;
 
+let isBgmPending = false;
+
 // Untuk SFX kita bisa membuat audio pool atau langsung putar
 // Array untuk menyimpan beberapa Audio object agar bisa play SFX bertumpuk (overlap)
 const sfxPool = [];
@@ -47,6 +49,7 @@ export const updateAudioSettings = (settings) => {
 export const playBGM = (url) => {
   if (!url) {
     bgmAudio.pause();
+    isBgmPending = false;
     return;
   }
   
@@ -56,9 +59,40 @@ export const playBGM = (url) => {
   if (bgmAudio.src !== new URL(resolvedUrl, document.baseURI).href) {
     bgmAudio.src = resolvedUrl;
     bgmAudio.volume = volumes.master * volumes.bgm;
-    bgmAudio.play().catch(e => console.warn("Autoplay dicegah oleh browser.", e));
+    
+    // Pastikan jika volume > 0 baru kita peduli tentang play
+    if (bgmAudio.volume > 0) {
+      bgmAudio.play().then(() => {
+        isBgmPending = false;
+        console.log("BGM Berhasil diputar:", resolvedUrl);
+      }).catch(e => {
+        console.warn("Autoplay dicegah oleh browser. Menunggu klik dari user.", e);
+        isBgmPending = true;
+      });
+    }
   } else if (bgmAudio.paused) {
-    bgmAudio.play().catch(e => console.warn("Autoplay dicegah.", e));
+    if (bgmAudio.volume > 0) {
+      bgmAudio.play().then(() => {
+        isBgmPending = false;
+      }).catch(e => {
+        console.warn("Autoplay dicegah.", e);
+        isBgmPending = true;
+      });
+    }
+  }
+};
+
+// Fungsi yang bisa dipanggil oleh interaksi user manapun (misal klik next teks)
+// untuk memaksa lagu yang tertahan agar berputar
+export const resumePendingAudio = () => {
+  if (isBgmPending && bgmAudio.src) {
+    console.log("Mencoba play BGM yang tertunda...");
+    bgmAudio.play().then(() => {
+      isBgmPending = false;
+      console.log("BGM tertunda berhasil diputar!");
+    }).catch(e => {
+      console.warn("Masih gagal resume BGM", e);
+    });
   }
 };
 

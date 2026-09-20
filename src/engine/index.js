@@ -14,4 +14,4 @@ export { CustomSlider } from './components/CustomSlider';
 export { HistoryLog } from './components/HistoryLog';
 export { saveGameData, getSaveData } from './core/saveManager';
 export { getSettings, saveSettings } from './core/settingsManager';
-export { updateAudioSettings, playBGM, stopBGM, playTypingSFX } from './core/audioManager';
+export { updateAudioSettings, playBGM, stopBGM, playTypingSFX, resumePendingAudio } from './core/audioManager';

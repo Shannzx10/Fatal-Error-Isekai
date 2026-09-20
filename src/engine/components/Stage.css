@@ -110,18 +110,3 @@
   transform: scale(0.95);
 }
 
-@media (max-width: 900px), (max-height: 600px) {
-  .ingame-menu-container {
-    top: 10px;
-    right: 10px;
-    gap: 8px; /* Jarak dirapatkan sedikit di HP */
-  }
-  .ingame-menu-btn {
-    font-size: 0.9rem;
-    padding: 5px 10px;
-  }
-  .ingame-menu-btn.icon-btn {
-    font-size: 1rem;
-    padding: 4px 10px;
-  }
-}

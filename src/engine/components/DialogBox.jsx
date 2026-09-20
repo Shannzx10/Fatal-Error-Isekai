@@ -1,6 +1,6 @@
 // src/engine/components/DialogBox.jsx
 import React, { useState, useEffect } from 'react';
-import { playTypingSFX } from '../core/audioManager';
+import { playTypingSFX, resumePendingAudio } from '../core/audioManager';
 import './DialogBox.css';
 
 export function DialogBox({ speaker, text, onClick, settings, isAuto, isSkip }) {
@@ -61,6 +61,9 @@ export function DialogBox({ speaker, text, onClick, settings, isAuto, isSkip }) 
   }, [isAuto, isTyping, text, onClick]);
 
   const handleClick = () => {
+    // Apapun yang di-klik, paksa putar lagu yang mungkin tertahan browser
+    resumePendingAudio();
+
     // Jangan izinkan klik manual jika sedang mode Skip
     if (isSkip) return; 
 

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useEngine, Stage, DialogBox, ChoiceMenu, Sprite, MainMenu, DataMenu, SettingMenu, HistoryLog, CollectionMenu, ChapterMenu, LoadingScreen, saveGameData, getSettings, updateAudioSettings } from './engine';
 import { getAutoSave } from './engine/core/saveManager';
+import { AssetManager } from './engine/core/assetManager';
 import defaultStoryData from './game/scripts/story.json';
 import './App.css';
+import './engine/components/UnlockNotification.css';
 
 function App() {
   const initialAutoSave = getAutoSave();
@@ -11,8 +13,38 @@ function App() {
   const [showHistory, setShowHistory] = useState(false);
   const [hideUI, setHideUI] = useState(false);
   
+  // State untuk skala layar (Letterboxing / Fill Screen)
+  const [scale, setScale] = useState(1);
+  const [containerWidth, setContainerWidth] = useState(1280);
+
   // State untuk menyimpan script JSON yang sedang dimainkan
   const [currentScript, setCurrentScript] = useState(defaultStoryData);
+
+  // Kalkulasi skala layar agar muat di device apa pun tanpa merusak rasio (1280x720)
+  useEffect(() => {
+    const handleResize = () => {
+      // Tunggu sedikit agar Capacitor selesai rotasi jika di mobile
+      setTimeout(() => {
+        const BASE_HEIGHT = 720;
+        const scaleY = window.innerHeight / BASE_HEIGHT;
+        const dynamicWidth = window.innerWidth / scaleY;
+        
+        setScale(scaleY);
+        setContainerWidth(dynamicWidth);
+      }, 100);
+    };
+
+    handleResize(); // Set awal
+    
+    // Tambahkan listener untuk orientation change juga
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, []);
 
   // Pastikan audio sync saat pertama kali dimuat
   useEffect(() => {
@@ -33,7 +65,9 @@ function App() {
     isSkip,
     toggleAuto,
     toggleSkip,
-    isEnd
+    isEnd,
+    unlockNotification,
+    achievedEnding
   } = useEngine(currentScript);
 
   // Jika nanti butuh import JSON chapter lain secara dinamis
@@ -124,7 +158,21 @@ function App() {
     (currentSceneId !== 'start' || currentLineIndex > 0);
 
   return (
-    <div className="game-container">
+    <div className="game-container" style={{ transform: `scale(${scale})`, width: `${containerWidth}px` }}>
+      {/* Toast Notification untuk Unlock Collection */}
+      {unlockNotification && (
+        <div className="unlock-notification">
+          <div 
+            className="unlock-notification-thumb" 
+            style={{ backgroundImage: `url(${AssetManager.get(unlockNotification.thumbnail)})` }}
+          />
+          <div className="unlock-notification-text">
+            <p className="unlock-notification-subtitle">NEW COLLECTION UNLOCKED</p>
+            <p className="unlock-notification-title">{unlockNotification.title}</p>
+          </div>
+        </div>
+      )}
+
       {gameState === 'menu' && (
         <MainMenu 
           onStart={startGame}
@@ -188,7 +236,7 @@ function App() {
       {gameState === 'playing' && (
         <>
           {/* Grup Tombol In-Game Kanan Atas */}
-          {!hideUI && !currentLine?.isCutscene && (
+          {!hideUI && !isEnd && !currentLine?.isCutscene && (
             <div className="ingame-menu-container">
               {/* Tombol Skip */}
               <button 
@@ -246,9 +294,53 @@ function App() {
           )}
 
           {isEnd ? (
-            <div className="end-screen">
-              <h1>THE END</h1>
-              <button onClick={() => handleGlobalNavigation('menu')} style={{marginTop: '20px', padding: '10px 20px', fontSize: '1.2rem', cursor: 'pointer'}}>Kembali ke Menu</button>
+            <div 
+              className="end-screen"
+              style={{
+                backgroundImage: achievedEnding ? `url(${AssetManager.get(achievedEnding.thumbnail)})` : 'none',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                position: 'relative'
+              }}
+            >
+              {/* Overlay gelap agar teks terbaca */}
+              <div style={{
+                position: 'absolute',
+                top: 0, left: 0, width: '100%', height: '100%',
+                backgroundColor: achievedEnding ? 'rgba(0,0,0,0.5)' : 'transparent',
+                zIndex: 0
+              }} />
+              
+              <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+                <h1 style={{ 
+                  fontFamily: "'Chakra Petch', sans-serif", 
+                  fontSize: '4rem', 
+                  margin: '0 0 10px 0',
+                  textShadow: '0 0 15px var(--accent-color, #ff3366)'
+                }}>
+                  {achievedEnding ? achievedEnding.title : "THE END"}
+                </h1>
+                
+                {achievedEnding && (
+                  <p style={{
+                    fontFamily: "'Rajdhani', sans-serif",
+                    fontSize: '1.5rem',
+                    color: '#ddd',
+                    marginBottom: '30px',
+                    letterSpacing: '2px'
+                  }}>
+                    Ending Unlocked
+                  </p>
+                )}
+                
+                <button 
+                  className="ingame-menu-btn"
+                  onClick={() => handleGlobalNavigation('menu')} 
+                  style={{ padding: '15px 30px', fontSize: '1.2rem', margin: '0 auto' }}
+                >
+                  Kembali ke Menu
+                </button>
+              </div>
             </div>
           ) : currentLine && !showHistory ? (
             <Stage 
@@ -261,30 +353,24 @@ function App() {
               {/* Jika isCutscene true, kita bisa hide Karakter dan Dialog Box secara penuh */}
               {!currentLine?.isCutscene && (
                 <>
-                  {visuals.activeSpriteLeft && (
-                    <Sprite 
-                      src={visuals.activeSpriteLeft} 
-                      position="left" 
-                      animation={globalSettings.enableTransitions ? "fade-in" : "none"}
-                      isActive={visuals.activeSlot === 'left'}
-                    />
-                  )}
-                  {visuals.activeSpriteCenter && (
-                    <Sprite 
-                      src={visuals.activeSpriteCenter} 
-                      position="center" 
-                      animation={globalSettings.enableTransitions ? "fade-in" : "none"}
-                      isActive={visuals.activeSlot === 'center'}
-                    />
-                  )}
-                  {visuals.activeSpriteRight && (
-                    <Sprite 
-                      src={visuals.activeSpriteRight} 
-                      position="right" 
-                      animation={globalSettings.enableTransitions ? "fade-in" : "none"}
-                      isActive={visuals.activeSlot === 'right'}
-                    />
-                  )}
+                  <Sprite 
+                    src={visuals.activeSpriteLeft} 
+                    position="left" 
+                    enableTransitions={globalSettings.enableTransitions}
+                    isActive={visuals.activeSlot === 'left'}
+                  />
+                  <Sprite 
+                    src={visuals.activeSpriteCenter} 
+                    position="center" 
+                    enableTransitions={globalSettings.enableTransitions}
+                    isActive={visuals.activeSlot === 'center'}
+                  />
+                  <Sprite 
+                    src={visuals.activeSpriteRight} 
+                    position="right" 
+                    enableTransitions={globalSettings.enableTransitions}
+                    isActive={visuals.activeSlot === 'right'}
+                  />
                 </>
               )}
 

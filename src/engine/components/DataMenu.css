@@ -51,7 +51,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 10vh 0 5vh 5%;
+  padding: 10% 0 5% 5%;
   box-sizing: border-box;
 }
 
@@ -59,7 +59,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-bottom: 8vh;
+  margin-bottom: 8%;
 }
 
 .data-main-title {
@@ -139,7 +139,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 10vh 5% 5vh 0;
+  padding: 10% 5% 5% 0;
   box-sizing: border-box;
 }
 
@@ -325,7 +325,7 @@
 
 .sidebar-btn.back-btn {
   margin-top: auto;
-  margin-bottom: 5vh;
+  margin-bottom: 5%;
   color: #ffffff;
   opacity: 0.8;
 }
@@ -415,44 +415,3 @@
 }
 
 /* Responsiveness for mobile portrait rotated via CSS (max-width: 600px is actually height in portrait) */
-@media (max-width: 900px), (max-height: 600px) {
-  /* Menggunakan nilai font statis rem untuk mobile agar tidak terlalu kecil di layar panjang */
-  .sidebar-btn { font-size: 1.1rem; padding: 5px 0; } 
-  
-  .data-sidebar {
-    width: 30%; 
-    min-width: 140px; 
-    padding: 6vh 0 3vh 8%; /* Tambah padding kiri dari 3% menjadi 8% agar teks tidak mepet layar */
-  }
-
-  .sidebar-top {
-    gap: 1rem; 
-    margin-bottom: 2vh;
-  }
-
-  .data-slots-area {
-    width: 70%;
-    padding: 6vh 5% 3vh 2%; /* Beri ruang bernafas di kanan juga */
-  }
-
-  .section-title { font-size: 1.6rem; margin-bottom: 1rem; border-width: 2px; } 
-  .slots-container { gap: 10px; } 
-  
-  .slot-button { padding: 15px 20px; } 
-  .slot-number { font-size: 1.3rem; width: 50px; margin-right: 10px; } 
-  .slot-date { font-size: 0.8rem; } 
-  .slot-text { font-size: 1rem; } 
-  .slot-empty-text { font-size: 1rem; }
-  
-  .modal-box { padding: 1.5rem; width: 90%; max-width: 350px; }
-  .modal-title { font-size: 1.5rem; }
-  .modal-text { font-size: 1rem; margin-bottom: 1.5rem; }
-  .modal-btn { font-size: 1rem; padding: 8px 15px; }
-}
-
-@media (max-width: 650px), (max-height: 450px) {
-  .sidebar-btn { font-size: 1rem; letter-spacing: 1px; }
-  .data-sidebar { width: 30%; min-width: 120px; padding-left: 5%; } /* Jangan kurang dari 5% */
-  .data-slots-area { width: 70%; padding-left: 2%; padding-right: 5%; }
-  .slot-button { padding: 10px 15px; }
-}

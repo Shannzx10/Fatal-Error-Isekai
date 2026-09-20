@@ -1,5 +1,6 @@
 // src/engine/components/ChoiceMenu.jsx
 import React from 'react';
+import { resumePendingAudio } from '../core/audioManager';
 import './ChoiceMenu.css';
 
 export function ChoiceMenu({ choices, onSelect }) {
@@ -14,6 +15,7 @@ export function ChoiceMenu({ choices, onSelect }) {
             className="choice-button"
             onClick={(e) => {
               e.stopPropagation(); // Prevent advancing the dialog
+              resumePendingAudio();
               onSelect(choice.target);
             }}
           >
